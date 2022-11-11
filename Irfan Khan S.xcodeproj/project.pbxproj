@@ -13,6 +13,7 @@
 		DD35BE53291E503C006F6950 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD35BE51291E503C006F6950 /* Main.storyboard */; };
 		DD35BE55291E5040006F6950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD35BE54291E5040006F6950 /* Assets.xcassets */; };
 		DD35BE58291E5040006F6950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD35BE56291E5040006F6950 /* LaunchScreen.storyboard */; };
+		DD35BE63291E8422006F6950 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD35BE65291E8422006F6950 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,10 @@
 		DD35BE54291E5040006F6950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD35BE57291E5040006F6950 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD35BE59291E5040006F6950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD35BE64291E8422006F6950 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DD35BE67291E84C8006F6950 /* hi-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hi-IN"; path = "hi-IN.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DD35BE68291E84EB006F6950 /* kn-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kn-IN"; path = "kn-IN.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DD35BE69291E8509006F6950 /* ur-Arab-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-Arab-IN"; path = "ur-Arab-IN.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 				DD35BE54291E5040006F6950 /* Assets.xcassets */,
 				DD35BE56291E5040006F6950 /* LaunchScreen.storyboard */,
 				DD35BE59291E5040006F6950 /* Info.plist */,
+				DD35BE65291E8422006F6950 /* Localizable.strings */,
 			);
 			path = "Irfan Khan S";
 			sourceTree = "<group>";
@@ -109,6 +115,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"hi-IN",
+				"kn-IN",
+				"ur-Arab-IN",
 			);
 			mainGroup = DD35BE3F291E503C006F6950;
 			productRefGroup = DD35BE49291E503C006F6950 /* Products */;
@@ -126,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD35BE58291E5040006F6950 /* LaunchScreen.storyboard in Resources */,
+				DD35BE63291E8422006F6950 /* Localizable.strings in Resources */,
 				DD35BE55291E5040006F6950 /* Assets.xcassets in Resources */,
 				DD35BE53291E503C006F6950 /* Main.storyboard in Resources */,
 			);
@@ -163,6 +173,17 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		DD35BE65291E8422006F6950 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD35BE64291E8422006F6950 /* en */,
+				DD35BE67291E84C8006F6950 /* hi-IN */,
+				DD35BE68291E84EB006F6950 /* kn-IN */,
+				DD35BE69291E8509006F6950 /* ur-Arab-IN */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -170,6 +191,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -230,6 +252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
