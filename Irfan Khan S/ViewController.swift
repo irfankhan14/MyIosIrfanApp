@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        print(NSLocalizedString("welcome_screen_title", comment: ""))    
+        print(NSLocalizedString("app_name", comment: ""))    
     }
 
 
