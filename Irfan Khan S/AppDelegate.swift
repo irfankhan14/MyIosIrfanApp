@@ -11,10 +11,27 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.splashScreen()
         return true
+    }
+    
+    private func splashScreen() {
+        let launchScreenVC = UIStoryboard.init(name: "LaunchScreen", bundle: nil)
+        let rootVC = launchScreenVC.instantiateViewController(withIdentifier: "splashController")
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(dismissSplashController), userInfo: nil, repeats: false)
+    }
+    
+    @objc func dismissSplashController() {
+        let mainScreenVC = UIStoryboard.init(name: "Main", bundle: nil)
+        let rootVC = mainScreenVC.instantiateViewController(withIdentifier: "initController")
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle
