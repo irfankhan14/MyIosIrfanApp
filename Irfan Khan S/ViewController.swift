@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         print("On Login")
         
         if (edtEmailAddress.text == Constants.init().emailAddress && edtPassword.text == Constants.init().password){
-            print("Correct Login")
+            self.showToast(message: "Logged In", font: .systemFont(ofSize: 12.0))
         } else {
             self.showToast(message: NSLocalizedString("txt_incorrect_data", comment: ""), font: .systemFont(ofSize: 12.0))
         }
@@ -48,9 +48,9 @@ class ViewController: UIViewController {
 extension UIViewController {
     
     func showToast(message : String, font: UIFont) {
-
+        
         //ToDo:: Learn Alignments
-        let toastLabel = UILabel(frame: CGRect(x: 100, y: self.view.frame.size.height-100, width: 224, height: 36))
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4, y: self.view.frame.size.height - self.view.frame.size.height/10, width: self.view.frame.size.width/2, height: 36))
         toastLabel.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = font
