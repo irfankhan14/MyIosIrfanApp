@@ -45,8 +45,8 @@ class ViewController: UIViewController {
         edtEmailAddress.text = emailAddress
         
         
-        let appLoginStatus = UserDefaults.standard.string(forKey:Constants.init().keyAppLoginStatus)
-        if ((appLoginStatus != nil) == true) {
+        let appLoginStatus = UserDefaults.standard.bool(forKey:Constants.init().keyAppLoginStatus)
+        if (appLoginStatus == true) {
             navigateToBaseView()
         }
     }
