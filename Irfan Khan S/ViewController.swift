@@ -44,15 +44,15 @@ class ViewController: UIViewController {
         let emailAddress = UserDefaults.standard.string(forKey: Constants.init().keyEmailAddress)
         edtEmailAddress.text = emailAddress
         
-        
-        let appLoginStatus = UserDefaults.standard.bool(forKey:Constants.init().keyAppLoginStatus)
-        if (appLoginStatus == true) {
-            navigateToBaseView()
-        }
+        edtPassword.text = emailAddress
+//        let appLoginStatus = UserDefaults.standard.bool(forKey:Constants.init().keyAppLoginStatus)
+//        if (appLoginStatus == true) {
+//            navigateToBaseView()
+//        }
     }
     
     private func navigateToBaseView() {
-        let storyBoard = self.storyboard?.instantiateViewController(withIdentifier: "BaseViewController") as! BaseViewController
+        let storyBoard = self.storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as! MainTabViewController
         self.navigationController?.pushViewController(storyBoard, animated: true)
     }
     
