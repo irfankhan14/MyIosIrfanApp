@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD2B3FD72920F5D900C22031 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2B3FD62920F5D900C22031 /* BaseViewController.swift */; };
 		DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35BE4B291E503C006F6950 /* AppDelegate.swift */; };
 		DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35BE4D291E503C006F6950 /* SceneDelegate.swift */; };
 		DD35BE50291E503C006F6950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35BE4F291E503C006F6950 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD2B3FD62920F5D900C22031 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DD35BE48291E503C006F6950 /* Irfan Khan S.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Irfan Khan S.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD35BE4B291E503C006F6950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD35BE4D291E503C006F6950 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD2B3FD32920F46E00C22031 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				DD2B3FD62920F5D900C22031 /* BaseViewController.swift */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
 		DD35BE3F291E503C006F6950 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +75,7 @@
 		DD35BE4A291E503C006F6950 /* Irfan Khan S */ = {
 			isa = PBXGroup;
 			children = (
+				DD2B3FD32920F46E00C22031 /* base */,
 				DD507FAF291FB032008FC8F9 /* utils */,
 				DD35BE4B291E503C006F6950 /* AppDelegate.swift */,
 				DD35BE4D291E503C006F6950 /* SceneDelegate.swift */,
@@ -167,6 +178,7 @@
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
 				DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */,
 				DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */,
+				DD2B3FD72920F5D900C22031 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

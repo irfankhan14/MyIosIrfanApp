@@ -23,10 +23,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onLoginSubmit(_ sender: UIButton) {
-        print("On Login")
-        
         if (edtEmailAddress.text == Constants.init().emailAddress && edtPassword.text == Constants.init().password){
-            self.showToast(message: "Logged In", font: .systemFont(ofSize: 12.0))
+            let storyBoard = self.storyboard?.instantiateViewController(withIdentifier: "BaseViewController") as! BaseViewController
+            self.navigationController?.pushViewController(storyBoard, animated: true)
         } else {
             self.showToast(message: NSLocalizedString("txt_incorrect_data", comment: ""), font: .systemFont(ofSize: 12.0))
         }
