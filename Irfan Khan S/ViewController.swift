@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     
     @IBAction func onLoginSubmit(_ sender: UIButton) {
         if (edtEmailAddress.text == Constants.init().emailAddress && edtPassword.text == Constants.init().password){
-            let storyBoard = self.storyboard?.instantiateViewController(withIdentifier: "BaseViewController") as! BaseViewController
-            self.navigationController?.pushViewController(storyBoard, animated: true)
+            writeUserDefaults(emailAddress: Constants.init().emailAddress, appLoginStatus: true)
+            navigateToBaseView()
         } else {
             self.showToast(message: NSLocalizedString("txt_incorrect_data", comment: ""), font: .systemFont(ofSize: 12.0))
         }
@@ -40,7 +40,27 @@ class ViewController: UIViewController {
         
         self.edtEmailAddress.setupLeftImage(image: UIImage(systemName: "envelope")!, tintColor: UIColor.black )
         self.edtPassword.setupLeftImage(image: UIImage(systemName: "lock")!, tintColor: UIColor.black )
+        
+        let emailAddress = UserDefaults.standard.string(forKey: Constants.init().keyEmailAddress)
+        edtEmailAddress.text = emailAddress
+        
+        
+        let appLoginStatus = UserDefaults.standard.string(forKey:Constants.init().keyAppLoginStatus)
+        if ((appLoginStatus != nil) == true) {
+            navigateToBaseView()
+        }
     }
+    
+    private func navigateToBaseView() {
+        let storyBoard = self.storyboard?.instantiateViewController(withIdentifier: "BaseViewController") as! BaseViewController
+        self.navigationController?.pushViewController(storyBoard, animated: true)
+    }
+    
+    private func writeUserDefaults(emailAddress: String, appLoginStatus: Bool) {
+        UserDefaults.standard.set(emailAddress, forKey: Constants.init().keyEmailAddress)
+        UserDefaults.standard.set(appLoginStatus, forKey: Constants.init().keyAppLoginStatus)
+    }
+    
     
 }
 

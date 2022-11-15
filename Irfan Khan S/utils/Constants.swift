@@ -10,4 +10,7 @@ import Foundation
 class Constants {
     var emailAddress = "ik"
     var password = "ik"
+    
+    var keyEmailAddress = "KEY_EMAIL_ADDRESS"
+    var keyAppLoginStatus = "KEY_APP_LOGIN_STATUS"
 }
