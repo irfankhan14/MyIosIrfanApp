@@ -72,14 +72,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5T-Wx-3XW">
-                                <rect key="frame" x="8" y="52" width="398" height="500"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5T-Wx-3XW">
+                                <rect key="frame" x="8" y="52" width="398" height="188"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fW1-hM-rs1">
-                                        <rect key="frame" x="8" y="38" width="350" height="400"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fW1-hM-rs1">
+                                        <rect key="frame" x="8" y="36" width="382" height="144"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="5Rb-sO-VS3">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="144" id="XPA-vc-hS5"/>
+                                            <constraint firstAttribute="width" constant="382" id="ezX-sn-hXM"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5Rb-sO-VS3">
                                             <size key="itemSize" width="72" height="72"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -100,30 +103,44 @@
                                             <outlet property="delegate" destination="Rzt-dM-PEd" id="ozT-Ps-80Z"/>
                                         </connections>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MH-4I-Nwd">
-                                        <rect key="frame" x="8" y="8" width="382" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MH-4I-Nwd">
+                                        <rect key="frame" x="12" y="8" width="374" height="20"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="7MH-4I-Nwd" firstAttribute="leading" secondItem="U5T-Wx-3XW" secondAttribute="leading" constant="12" id="2bJ-QZ-LUe"/>
+                                    <constraint firstItem="7MH-4I-Nwd" firstAttribute="leading" secondItem="U5T-Wx-3XW" secondAttribute="leading" constant="12" id="7cL-dM-4QU"/>
+                                    <constraint firstAttribute="trailing" secondItem="fW1-hM-rs1" secondAttribute="trailing" constant="8" id="Lft-pE-PCP"/>
+                                    <constraint firstAttribute="height" constant="188" id="PLP-8s-q4V"/>
+                                    <constraint firstAttribute="trailing" secondItem="7MH-4I-Nwd" secondAttribute="trailing" constant="12" id="Sb3-Ky-aJf"/>
+                                    <constraint firstItem="fW1-hM-rs1" firstAttribute="top" secondItem="7MH-4I-Nwd" secondAttribute="bottom" constant="8" id="UDs-aF-sIC"/>
+                                    <constraint firstItem="7MH-4I-Nwd" firstAttribute="top" secondItem="U5T-Wx-3XW" secondAttribute="top" constant="12" id="XMF-nU-ZJy"/>
+                                    <constraint firstAttribute="trailing" secondItem="7MH-4I-Nwd" secondAttribute="trailing" constant="12" id="XUV-7R-91o"/>
+                                    <constraint firstAttribute="bottom" secondItem="fW1-hM-rs1" secondAttribute="bottom" constant="8" id="abR-d2-pIl"/>
+                                    <constraint firstItem="fW1-hM-rs1" firstAttribute="top" secondItem="7MH-4I-Nwd" secondAttribute="bottom" constant="8" id="bFz-JD-CHY"/>
+                                    <constraint firstAttribute="width" constant="398" id="cfE-Pe-JBa"/>
+                                    <constraint firstItem="7MH-4I-Nwd" firstAttribute="top" secondItem="U5T-Wx-3XW" secondAttribute="top" constant="8" id="mz3-6y-mu6"/>
+                                    <constraint firstItem="fW1-hM-rs1" firstAttribute="leading" secondItem="U5T-Wx-3XW" secondAttribute="leading" constant="8" id="xif-XD-2ev"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aLt-P1-BOr"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="U5T-Wx-3XW" firstAttribute="top" secondItem="aLt-P1-BOr" secondAttribute="top" constant="8" id="01h-aD-I0F"/>
-                            <constraint firstItem="aLt-P1-BOr" firstAttribute="bottom" secondItem="U5T-Wx-3XW" secondAttribute="bottom" constant="300" id="9SO-Pf-FpR"/>
-                            <constraint firstItem="aLt-P1-BOr" firstAttribute="trailing" secondItem="U5T-Wx-3XW" secondAttribute="trailing" constant="8" id="ML7-06-yHJ"/>
-                            <constraint firstItem="U5T-Wx-3XW" firstAttribute="leading" secondItem="aLt-P1-BOr" secondAttribute="leading" constant="8" id="Ptg-yJ-SiN"/>
+                            <constraint firstItem="aLt-P1-BOr" firstAttribute="trailing" secondItem="U5T-Wx-3XW" secondAttribute="trailing" constant="8" id="Cla-r5-ljy"/>
+                            <constraint firstItem="U5T-Wx-3XW" firstAttribute="top" secondItem="aLt-P1-BOr" secondAttribute="top" constant="8" id="L9H-SN-G4d"/>
+                            <constraint firstItem="U5T-Wx-3XW" firstAttribute="leading" secondItem="aLt-P1-BOr" secondAttribute="leading" constant="8" id="jiO-Mm-4Mh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="AZA-Rf-Oqs"/>
                     <navigationItem key="navigationItem" id="N51-eT-oSU"/>
                     <connections>
                         <outlet property="collectionAccounts" destination="fW1-hM-rs1" id="Meu-ew-1B8"/>
+                        <outlet property="txtAccounts" destination="7MH-4I-Nwd" id="Kv2-Xv-NUw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2K-GZ-n5x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

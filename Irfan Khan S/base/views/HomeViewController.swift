@@ -11,6 +11,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
                           UICollectionViewDataSource {
     
     @IBOutlet weak var collectionAccounts: UICollectionView!
+    @IBOutlet weak var txtAccounts: UILabel!
     
     var accountsList = Array<HomeItems>()
     
@@ -34,9 +35,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         let width = (self.view.frame.size.width - CGFloat((numOfCoumns - 1) * 10)) / CGFloat(numOfCoumns)
         let layout = collectionAccounts.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        
+        let collectionCell = 72
+        collectionAccounts.frame = CGRect(x: 0, y: 48, width: collectionCell*5, height: collectionCell*2)
+
     }
     
     private func initializeAccountsList() {
+        txtAccounts.text = NSLocalizedString("txt_my_accounts", comment: "")
+        
         accountsList.removeAll()
         
         accountsList.append(HomeItems(idValue: 0, nameValue: NSLocalizedString("txt_sbi", comment: ""), imageValue: UIImage(named: "ic_home_sbi")!))
@@ -70,7 +77,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let name = accountsList[indexPath.row].name
-        print("Item selected is:" + name)
+        print("Item selected at position " + indexPath.row.description + " is " + name)
     }
 
     
