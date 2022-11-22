@@ -7,10 +7,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource  {
+class HomeViewController: UIViewController, UICollectionViewDelegate,
+                          UICollectionViewDataSource {
+    
     @IBOutlet weak var collectionAccounts: UICollectionView!
     
     var accountsList = Array<HomeItems>()
+    
     
     
     override func viewDidLoad() {
@@ -20,10 +23,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         initializeAccountsList()
         
-        let nibcell = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
-        collectionAccounts.register(nibcell, forCellWithReuseIdentifier: "accounts_cell")
-
         
+        
+        let nibcell = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
+        collectionAccounts?.contentInsetAdjustmentBehavior = .always
+        collectionAccounts.register(nibcell, forCellWithReuseIdentifier: "accounts_cell")
+        
+        
+        let numOfCoumns = 5
+        let width = (self.view.frame.size.width - CGFloat((numOfCoumns - 1) * 10)) / CGFloat(numOfCoumns)
+        let layout = collectionAccounts.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
     }
     
     private func initializeAccountsList() {
@@ -44,20 +54,24 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return accountsList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "accounts_cell", for: indexPath) as! HomeCollectionViewCell
         cell.homeItemImage.image = accountsList[indexPath.row].image
         cell.homeItemName.text = accountsList[indexPath.row].name
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         let name = accountsList[indexPath.row].name
         print("Item selected is:" + name)
     }
 
+    
 }
