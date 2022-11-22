@@ -46,6 +46,10 @@
 		DD3D793A2924D4F300B17382 /* ic_dialy_workouts.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3D791E2924D4F300B17382 /* ic_dialy_workouts.png */; };
 		DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */; };
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
+		DD62138F2927A9D5001F2972 /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62138E2927A9D5001F2972 /* HomeItems.swift */; };
+		DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */; };
+		DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */; };
+		DDD88C5E29267056003B3BD2 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +97,10 @@
 		DD3D791E2924D4F300B17382 /* ic_dialy_workouts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_dialy_workouts.png; sourceTree = "<group>"; };
 		DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DD62138E2927A9D5001F2972 /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeItems.swift; path = "../../../../TestingApps/ios-swift-uicollectionviewcell-from-xib-master/HomeItems.swift"; sourceTree = "<group>"; };
+		DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 		DD2B3FD32920F46E00C22031 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				DDD88C5829266FC4003B3BD2 /* views */,
 				DD2B3FD62920F5D900C22031 /* BaseViewController.swift */,
 				DD1E39D629225420004E10B9 /* MainTabViewController.swift */,
 			);
@@ -134,6 +143,8 @@
 		DD35BE4A291E503C006F6950 /* Irfan Khan S */ = {
 			isa = PBXGroup;
 			children = (
+				DD62138D2927A959001F2972 /* model */,
+				DDD88C5729266FBC003B3BD2 /* adapters */,
 				DD2B3FD32920F46E00C22031 /* base */,
 				DD507FAF291FB032008FC8F9 /* utils */,
 				DD35BE4B291E503C006F6950 /* AppDelegate.swift */,
@@ -191,6 +202,31 @@
 				DD507FB2291FB478008FC8F9 /* Constants.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		DD62138D2927A959001F2972 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				DD62138E2927A9D5001F2972 /* HomeItems.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		DDD88C5729266FBC003B3BD2 /* adapters */ = {
+			isa = PBXGroup;
+			children = (
+				DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */,
+				DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */,
+			);
+			path = adapters;
+			sourceTree = "<group>";
+		};
+		DDD88C5829266FC4003B3BD2 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +309,7 @@
 				DD3D79362924D4F300B17382 /* ic_app_usage.png in Resources */,
 				DD3D79382924D4F300B17382 /* ic_home_amazon_pay.png in Resources */,
 				DD3D79252924D4F300B17382 /* ic_contacts.png in Resources */,
+				DDD88C5E29267056003B3BD2 /* HomeCollectionViewCell.xib in Resources */,
 				DD3D793A2924D4F300B17382 /* ic_dialy_workouts.png in Resources */,
 				DD3D792E2924D4F300B17382 /* ic_home_view_resume.png in Resources */,
 				DD3D79352924D4F300B17382 /* ic_home_security.png in Resources */,
@@ -299,7 +336,10 @@
 				DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */,
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
+				DD62138F2927A9D5001F2972 /* HomeItems.swift in Sources */,
+				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,
 				DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */,
+				DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */,
 				DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */,
 				DD1E39D729225420004E10B9 /* MainTabViewController.swift in Sources */,
 				DD2B3FD72920F5D900C22031 /* BaseViewController.swift in Sources */,
