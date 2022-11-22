@@ -165,6 +165,45 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qr-Du-ExC">
+                                <rect key="frame" x="8" y="572" width="372" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzh-m6-Q9q">
+                                        <rect key="frame" x="12" y="8" width="374" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="udR-ux-EtE">
+                                        <rect key="frame" x="8" y="36" width="355" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2zE-4s-qIr">
+                                            <size key="itemSize" width="72" height="72"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="others_cell" id="cbu-OM-KeS">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hkr-tk-h8C">
+                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Rzt-dM-PEd" id="0LS-f9-ftV"/>
+                                            <outlet property="delegate" destination="Rzt-dM-PEd" id="RT5-Qu-ovi"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aLt-P1-BOr"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -190,8 +229,10 @@
                     <connections>
                         <outlet property="collectionAccounts" destination="fW1-hM-rs1" id="Meu-ew-1B8"/>
                         <outlet property="collectionData" destination="l4J-as-zE0" id="Uyy-Ft-R1N"/>
+                        <outlet property="collectionOthers" destination="udR-ux-EtE" id="06T-hv-FT7"/>
                         <outlet property="txtAccounts" destination="7MH-4I-Nwd" id="Kv2-Xv-NUw"/>
                         <outlet property="txtData" destination="wmu-kB-FNB" id="EFE-Cy-nPs"/>
+                        <outlet property="txtOthers" destination="wzh-m6-Q9q" id="YDN-1y-Rdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2K-GZ-n5x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

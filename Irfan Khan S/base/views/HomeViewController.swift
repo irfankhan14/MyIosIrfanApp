@@ -16,6 +16,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var txtData: UILabel!
     @IBOutlet weak var collectionData: UICollectionView!
     
+    @IBOutlet weak var txtOthers: UILabel!
+    @IBOutlet weak var collectionOthers: UICollectionView!
+    
     var accountsList = Array<HomeItems>()
     var dataList = Array<HomeItems>()
     var othersList = Array<HomeItems>()
@@ -31,10 +34,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         initializeOthersList()
         
         
-        setCollectionLayout(collection: collectionAccounts, collectionKey: "accounts_cell", itemSize: accountsList.count)
-        setCollectionLayout(collection: collectionData, collectionKey: "data_cell",
+        setCollectionLayout(collection: collectionAccounts,
+                            collectionKey: "accounts_cell",
+                            itemSize: accountsList.count)
+        setCollectionLayout(collection: collectionData,
+                            collectionKey: "data_cell",
                             itemSize: dataList.count)
-
+        setCollectionLayout(collection: collectionOthers,
+                            collectionKey: "others_cell",
+                            itemSize: othersList.count)
+        
     }
     
     private func setCollectionLayout(collection: UICollectionView!,
@@ -60,8 +69,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
                         numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.collectionAccounts) {
             return accountsList.count
-        } else {
+        } else if (collectionView == self.collectionData) {
             return dataList.count
+        } else {
+            return othersList.count
         }
     }
     
@@ -72,10 +83,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
             cell.homeItemImage.image = accountsList[indexPath.row].image
             cell.homeItemName.text = accountsList[indexPath.row].name
             return cell
-        } else {
+        } else if (collectionView == self.collectionData){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "data_cell", for: indexPath) as! HomeCollectionViewCell
             cell.homeItemImage.image = dataList[indexPath.row].image
             cell.homeItemName.text = dataList[indexPath.row].name
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "others_cell", for: indexPath) as! HomeCollectionViewCell
+            cell.homeItemImage.image = othersList[indexPath.row].image
+            cell.homeItemName.text = othersList[indexPath.row].name
             return cell
         }
     }
@@ -86,8 +102,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         if (collectionView == self.collectionAccounts) {
             let name = accountsList[indexPath.row].name
             print("Item selected at position " + indexPath.row.description + " is " + name)
-        } else {
+        } else if (collectionView == self.collectionData) {
             let name = dataList[indexPath.row].name
+            print("Item selected at position " + indexPath.row.description + " is " + name)
+        }  else {
+            let name = othersList[indexPath.row].name
             print("Item selected at position " + indexPath.row.description + " is " + name)
         }
         
@@ -136,11 +155,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         dataList.append(HomeItems(idValue: 21, nameValue: NSLocalizedString("txt_payment_reminders", comment: ""), imageValue: UIImage(named: "ic_payment_reminders")!))
         dataList.append(HomeItems(idValue: 22, nameValue: NSLocalizedString("txt_my_education", comment: ""), imageValue: UIImage(named: "ic_home_education")!))
         dataList.append(HomeItems(idValue: 23, nameValue: NSLocalizedString("txt_app_usage", comment: ""), imageValue: UIImage(named: "ic_app_usage")!))
-        dataList.append(HomeItems(idValue: 24, nameValue: NSLocalizedString("title_daily_workouts", comment: ""), imageValue: UIImage(named: "ic_dialy_workouts")!))
+        dataList.append(HomeItems(idValue: 24, nameValue: NSLocalizedString("txt_daily_workouts", comment: ""), imageValue: UIImage(named: "ic_dialy_workouts")!))
         
     }
     
     private func initializeOthersList() {
+        txtOthers.text = NSLocalizedString("txt_others", comment: "")
+        othersList.removeAll()
         
+        othersList.append(HomeItems(idValue: 25, nameValue: NSLocalizedString("txt_my_scanner", comment: ""), imageValue: UIImage(named: "ic_scanner")!))
+        othersList.append(HomeItems(idValue: 26, nameValue: NSLocalizedString("txt_my_contacts", comment: ""), imageValue: UIImage(named: "ic_contacts")!))
+        othersList.append(HomeItems(idValue: 27, nameValue: NSLocalizedString("txt_my_songs", comment: ""), imageValue: UIImage(named: "ic_songs")!))
+        othersList.append(HomeItems(idValue: 28, nameValue: NSLocalizedString("txt_services", comment: ""), imageValue: UIImage(named: "ic_other_services")!))
+        othersList.append(HomeItems(idValue: 29, nameValue: NSLocalizedString("txt_log_out", comment: ""), imageValue: UIImage(named: "ic_home_logout")!))
     }
 }
