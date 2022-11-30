@@ -5,6 +5,9 @@
 //  Created by Irfan Khan on 11/11/22.
 //
 
+import Foundation
+import UIKit
+
 class HomeItems {
   
   var id: Int
