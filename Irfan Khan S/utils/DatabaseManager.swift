@@ -20,30 +20,31 @@ class DatabaseManager: NSObject{
     }
     
 
-    
-    
-    func fetchData() -> Bool{
+    func fetchDataSet(query: String) -> FMResultSet? {
         shareInstance.database?.open()
-        
-        var vds = [Any]()
-        let querySQL = "SELECT * FROM accounts"
-        
+        var fmResultSet: FMResultSet? = nil
         do {
-            let results = try shareInstance.database?.executeQuery(querySQL, values: vds)
-            
-            while results?.next() == true {
-                var reason = results?.string(forColumn: "reason")
-                var amount = results?.string(forColumn: "amount")
-                var result = "Account::" + reason! + ", Rs." + amount!
-                print( result)
-                
+            fmResultSet = try shareInstance.database?.executeQuery(query, values: [Any]())
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        return fmResultSet
+    }
+    
+    func fetchData(query: String) -> String{
+        shareInstance.database?.open()
+        var result: String = ""
+        do {
+            let fmResultSet = try shareInstance.database?.executeQuery(query, values: [Any]())
+            while fmResultSet?.next() == true {
+                result = fmResultSet?.string(forColumnIndex: 0) ?? ""
             }
         }
         catch {
             print(error.localizedDescription)
         }
-        shareInstance.database?.close()
-        return true
+        return result
     }
     
     class func copyDatabase(_ filename: String){

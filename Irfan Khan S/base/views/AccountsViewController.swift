@@ -9,8 +9,9 @@ import UIKit
 
 class AccountsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+    @IBOutlet weak var txtTotalAmount: UILabel!
     @IBOutlet weak var tableAccounts: UITableView!
+    
     var transactionsList = Array<TransactionsData>()
     
     override func viewDidLoad() {
@@ -18,6 +19,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Do any additional setup after loading the view.
         loadTransactions()
+        fetchTotalAmount()
         
         let uiNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         tableAccounts.register(uiNib, forCellReuseIdentifier: "transactions_cell")
@@ -45,9 +47,39 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func loadTransactions() {
-        transactionsList.append(TransactionsData(idValue: 1, amountValue: 10.0, transactionValue: "Cash Deposit", reasonValue: "Testing", timestampValue: "202201011920", accountValue: "account_sbi"))
-        transactionsList.append(TransactionsData(idValue: 2, amountValue: -20.0, transactionValue: "Cash Withdrawal", reasonValue: "Hello World", timestampValue: "202205010105", accountValue: "account_icici"))
-        transactionsList.append(TransactionsData(idValue: 3, amountValue: 30.0, transactionValue: "Cash Back", reasonValue: "My Data Value Received", timestampValue: "202210111417", accountValue: "account_icici_credit"))
+        transactionsList.removeAll()
+        let transactionsResult = DatabaseManager.getInstance().fetchDataSet(query: "Select * from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS)
+        while transactionsResult?.next() == true {
+            
+            let idValue = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID)
+            let amountValue = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT)
+            
+            let id: Int = Int(idValue!) ?? 0
+            let amount: Double = Double(amountValue!) ?? 0.0
+            
+            let transactionType = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE)
+            let reason = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_REASON)
+            let timestamp = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP)
+            let accountType = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE)
+            
+            
+            transactionsList.append(
+                TransactionsData(
+                    idValue: id,
+                    amountValue: amount,
+                    transactionValue: transactionType!,
+                    reasonValue: reason!,
+                    timestampValue: timestamp!,
+                    accountValue: accountType!
+                )
+            )
+            
+        }
+    }
+    
+    private func fetchTotalAmount() {
+        let totalAmount = DatabaseManager.getInstance().fetchData(query: "Select sum(" + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ") from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS)
+        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + totalAmount
     }
     
     private func fetchAmount(amount: String) -> String {

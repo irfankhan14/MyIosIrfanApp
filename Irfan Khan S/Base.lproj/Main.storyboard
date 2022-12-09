@@ -289,6 +289,7 @@
                     <tabBarItem key="tabBarItem" title="Accounts" image="indianrupeesign.circle" catalog="system" selectedImage="indianrupeesign.circle.fill" id="Mp1-qE-fpI"/>
                     <connections>
                         <outlet property="tableAccounts" destination="zZe-TA-eS6" id="q1E-qX-bf7"/>
+                        <outlet property="txtTotalAmount" destination="3RF-zA-okb" id="b4Y-E7-laR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7f-zv-e8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

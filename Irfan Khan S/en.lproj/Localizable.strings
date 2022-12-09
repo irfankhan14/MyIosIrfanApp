@@ -70,7 +70,7 @@
 "txt_change_date"= "Change Date";
 "txt_select_date"= "Select From Date";
 "txt_no_internet_connection"= "Sorry there is No Internet Connection";
-"txt_ind_rupee_symbol"= "₹&#160;";
+"txt_ind_rupee_symbol"= "₹ ";
 "txt_save_contacts"= "Contacts Saved Successfully";
 "title_ftp"= "FTP";
 "title_personal_defaults"= "Personal Defaults";
