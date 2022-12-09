@@ -12,17 +12,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
     
     @IBOutlet weak var collectionAccounts: UICollectionView!
     @IBOutlet weak var txtAccounts: UILabel!
+    @IBOutlet weak var viewAccounts: UIView!
     
-    @IBOutlet weak var txtData: UILabel!
     @IBOutlet weak var collectionData: UICollectionView!
+    @IBOutlet weak var txtData: UILabel!
+    @IBOutlet weak var viewMyData: UIView!
     
-    @IBOutlet weak var txtOthers: UILabel!
     @IBOutlet weak var collectionOthers: UICollectionView!
+    @IBOutlet weak var txtOthers: UILabel!
+    @IBOutlet weak var viewOthers: UIView!
     
     var accountsList = Array<HomeItems>()
     var dataList = Array<HomeItems>()
     var othersList = Array<HomeItems>()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,35 +36,55 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         initializeOthersList()
         
         
-        setCollectionLayout(collection: collectionAccounts,
+        setCollectionLayout(uiView: viewAccounts, collection: collectionAccounts,
                             collectionKey: "accounts_cell",
                             itemSize: accountsList.count)
-        setCollectionLayout(collection: collectionData,
+        setCollectionLayout(uiView: viewMyData, collection: collectionData,
                             collectionKey: "data_cell",
                             itemSize: dataList.count)
-        setCollectionLayout(collection: collectionOthers,
+        setCollectionLayout(uiView: viewOthers, collection: collectionOthers,
                             collectionKey: "others_cell",
                             itemSize: othersList.count)
         
     }
     
-    private func setCollectionLayout(collection: UICollectionView!,
+    private func setCollectionLayout(uiView: UIView!, collection: UICollectionView!,
                                      collectionKey: String, itemSize: Int) {
         let uiNib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
         collection?.contentInsetAdjustmentBehavior = .always
         collection.register(uiNib, forCellWithReuseIdentifier: collectionKey)
         
+        let padding = 8
         let numOfCoumns = 5
         let collectionSize = 72
+        let viewHeight = (itemSize * collectionSize / numOfCoumns) + 64
         
-        let width = (self.view.frame.size.width - CGFloat((numOfCoumns - 1) * 10)) / CGFloat(numOfCoumns)
+        
+        
+        // Setting the display of full views (Accounts, Data, Others)
+        let screenSize: CGRect = UIScreen.main.bounds
+        var yOffset = padding * 5
+        if (uiView == viewMyData) {
+            yOffset = Int(viewAccounts.frame.height) + (yOffset + 10)
+        } else if (uiView == viewOthers) {
+            yOffset = Int(viewAccounts.frame.height) + Int(viewMyData.frame.height) + (yOffset + 20)
+        }
+        uiView.frame = CGRect(x: padding, y: yOffset, width: Int(screenSize.width) - padding * 2, height: viewHeight)
+        
+        
+        
+        // Setting the number of items in a row in UICollectionView
         let layout = collection.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width)
-        
-        
+        layout.itemSize = CGSize(width: collectionSize, height: collectionSize)
+        collection.isScrollEnabled = false
         collection.frame = CGRect(x: 0, y: 48,
                                   width: collectionSize * numOfCoumns,
                                   height: collectionSize * itemSize / numOfCoumns)
+        
+        //        layout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 2
+        collection!.collectionViewLayout = layout
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -117,7 +139,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         }
         print("Item selected at position " + indexPath.row.description + " is " + name)
         NotificationCenter.default.post(name: Notification.Name("changeIndex"), object: nil, userInfo: indexData)
-
+        
     }
     
     

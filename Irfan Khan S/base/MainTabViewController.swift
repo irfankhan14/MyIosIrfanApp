@@ -13,6 +13,7 @@ class MainTabViewController: UITabBarController {
         super.viewDidLoad()
         
         print("Hello MainTabViewController")
+        navigationItem.hidesBackButton = true
 
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeIndex(notification:)), name: Notification.Name("changeIndex"), object: nil)
