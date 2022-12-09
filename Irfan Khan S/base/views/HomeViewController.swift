@@ -131,8 +131,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
             name = dataList[indexPath.row].name
             indexData = ["index": 1]
         }  else if (collectionView == self.collectionOthers) {
-            name = othersList[indexPath.row].name
-            indexData = ["index": 0]
+            DatabaseManager.getInstance().fetchData()
+//            name = othersList[indexPath.row].name
+//            indexData = ["index": 0]
         }  else {
             name = "No Item"
             indexData = ["index": 3]

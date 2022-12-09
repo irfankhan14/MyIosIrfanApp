@@ -43,6 +43,14 @@
 		DD3D79382924D4F300B17382 /* ic_home_amazon_pay.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3D791C2924D4F300B17382 /* ic_home_amazon_pay.png */; };
 		DD3D79392924D4F300B17382 /* ic_home_social_media.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3D791D2924D4F300B17382 /* ic_home_social_media.png */; };
 		DD3D793A2924D4F300B17382 /* ic_dialy_workouts.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3D791E2924D4F300B17382 /* ic_dialy_workouts.png */; };
+		DD41663C2941B8C0006F1666 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4166312941B8C0006F1666 /* FMDatabaseAdditions.m */; };
+		DD41663D2941B8C0006F1666 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4166322941B8C0006F1666 /* FMDatabaseQueue.m */; };
+		DD41663E2941B8C0006F1666 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4166342941B8C0006F1666 /* FMResultSet.m */; };
+		DD41663F2941B8C0006F1666 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4166392941B8C0006F1666 /* FMDatabase.m */; };
+		DD4166402941B8C0006F1666 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = DD41663B2941B8C0006F1666 /* FMDatabasePool.m */; };
+		DD4166422941B92C006F1666 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166412941B92C006F1666 /* Utility.swift */; };
+		DD4166442941B977006F1666 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166432941B977006F1666 /* DatabaseManager.swift */; };
+		DD4166462941C106006F1666 /* irfan.db in Resources */ = {isa = PBXBuildFile; fileRef = DD4166452941C106006F1666 /* irfan.db */; };
 		DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */; };
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
 		DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913E4B293F7B7200437A4B /* HomeItems.swift */; };
@@ -93,6 +101,21 @@
 		DD3D791C2924D4F300B17382 /* ic_home_amazon_pay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_home_amazon_pay.png; sourceTree = "<group>"; };
 		DD3D791D2924D4F300B17382 /* ic_home_social_media.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_home_social_media.png; sourceTree = "<group>"; };
 		DD3D791E2924D4F300B17382 /* ic_dialy_workouts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_dialy_workouts.png; sourceTree = "<group>"; };
+		DD4166302941B8BF006F1666 /* Irfan Khan S-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Irfan Khan S-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD4166312941B8C0006F1666 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		DD4166322941B8C0006F1666 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		DD4166332941B8C0006F1666 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		DD4166342941B8C0006F1666 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		DD4166352941B8C0006F1666 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		DD4166362941B8C0006F1666 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		DD4166372941B8C0006F1666 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		DD4166382941B8C0006F1666 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		DD4166392941B8C0006F1666 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		DD41663A2941B8C0006F1666 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		DD41663B2941B8C0006F1666 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		DD4166412941B92C006F1666 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		DD4166432941B977006F1666 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		DD4166452941C106006F1666 /* irfan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = irfan.db; sourceTree = "<group>"; };
 		DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD913E4B293F7B7200437A4B /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItems.swift; sourceTree = "<group>"; };
@@ -140,6 +163,7 @@
 		DD35BE4A291E503C006F6950 /* Irfan Khan S */ = {
 			isa = PBXGroup;
 			children = (
+				DD4166452941C106006F1666 /* irfan.db */,
 				DD62138D2927A959001F2972 /* model */,
 				DDD88C5729266FBC003B3BD2 /* adapters */,
 				DD2B3FD32920F46E00C22031 /* base */,
@@ -192,11 +216,33 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		DD41662F2941B879006F1666 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				DD4166372941B8C0006F1666 /* FMDatabase.h */,
+				DD4166392941B8C0006F1666 /* FMDatabase.m */,
+				DD4166382941B8C0006F1666 /* FMDatabaseAdditions.h */,
+				DD4166312941B8C0006F1666 /* FMDatabaseAdditions.m */,
+				DD4166362941B8C0006F1666 /* FMDatabasePool.h */,
+				DD41663B2941B8C0006F1666 /* FMDatabasePool.m */,
+				DD41663A2941B8C0006F1666 /* FMDatabaseQueue.h */,
+				DD4166322941B8C0006F1666 /* FMDatabaseQueue.m */,
+				DD4166352941B8C0006F1666 /* FMDB.h */,
+				DD4166332941B8C0006F1666 /* FMResultSet.h */,
+				DD4166342941B8C0006F1666 /* FMResultSet.m */,
+				DD4166302941B8BF006F1666 /* Irfan Khan S-Bridging-Header.h */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		DD507FAF291FB032008FC8F9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				DD41662F2941B879006F1666 /* FMDB */,
 				DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */,
 				DD507FB2291FB478008FC8F9 /* Constants.swift */,
+				DD4166412941B92C006F1666 /* Utility.swift */,
+				DD4166432941B977006F1666 /* DatabaseManager.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -258,6 +304,7 @@
 				TargetAttributes = {
 					DD35BE47291E503C006F6950 = {
 						CreatedOnToolsVersion = 13.4;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -289,6 +336,7 @@
 			files = (
 				DD3D79282924D4F300B17382 /* ic_home_paytm.png in Resources */,
 				DD35BE58291E5040006F6950 /* LaunchScreen.storyboard in Resources */,
+				DD4166462941C106006F1666 /* irfan.db in Resources */,
 				DD3D79372924D4F300B17382 /* ic_home_icici.png in Resources */,
 				DD3D79342924D4F300B17382 /* ic_home_notes.png in Resources */,
 				DD3D79232924D4F300B17382 /* ic_home_sms.png in Resources */,
@@ -330,15 +378,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD4166442941B977006F1666 /* DatabaseManager.swift in Sources */,
 				DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */,
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
+				DD41663F2941B8C0006F1666 /* FMDatabase.m in Sources */,
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
 				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,
+				DD4166422941B92C006F1666 /* Utility.swift in Sources */,
 				DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */,
 				DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */,
+				DD41663E2941B8C0006F1666 /* FMResultSet.m in Sources */,
 				DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */,
 				DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */,
+				DD41663D2941B8C0006F1666 /* FMDatabaseQueue.m in Sources */,
+				DD4166402941B8C0006F1666 /* FMDatabasePool.m in Sources */,
 				DD1E39D729225420004E10B9 /* MainTabViewController.swift in Sources */,
+				DD41663C2941B8C0006F1666 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -513,6 +569,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.Irfan-Khan-S";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Irfan Khan S/utils/FMDB/Irfan Khan S-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -523,6 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -540,6 +599,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.Irfan-Khan-S";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Irfan Khan S/utils/FMDB/Irfan Khan S-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

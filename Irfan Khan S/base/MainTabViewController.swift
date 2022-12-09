@@ -14,6 +14,7 @@ class MainTabViewController: UITabBarController {
         
         print("Hello MainTabViewController")
         navigationItem.hidesBackButton = true
+        DatabaseManager.copyDatabase("irfan.db")
 
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeIndex(notification:)), name: Notification.Name("changeIndex"), object: nil)
