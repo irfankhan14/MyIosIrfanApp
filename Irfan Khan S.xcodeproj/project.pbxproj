@@ -46,7 +46,7 @@
 		DD3D793A2924D4F300B17382 /* ic_dialy_workouts.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3D791E2924D4F300B17382 /* ic_dialy_workouts.png */; };
 		DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */; };
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
-		DD62138F2927A9D5001F2972 /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62138E2927A9D5001F2972 /* HomeItems.swift */; };
+		DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913E4B293F7B7200437A4B /* HomeItems.swift */; };
 		DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */; };
 		DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */; };
 		DDD88C5E29267056003B3BD2 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */; };
@@ -97,7 +97,7 @@
 		DD3D791E2924D4F300B17382 /* ic_dialy_workouts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_dialy_workouts.png; sourceTree = "<group>"; };
 		DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		DD62138E2927A9D5001F2972 /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeItems.swift; path = "../../../../TestingApps/ios-swift-uicollectionviewcell-from-xib-master/HomeItems.swift"; sourceTree = "<group>"; };
+		DD913E4B293F7B7200437A4B /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItems.swift; sourceTree = "<group>"; };
 		DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		DD62138D2927A959001F2972 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				DD62138E2927A9D5001F2972 /* HomeItems.swift */,
+				DD913E4B293F7B7200437A4B /* HomeItems.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -336,9 +336,9 @@
 				DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */,
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
-				DD62138F2927A9D5001F2972 /* HomeItems.swift in Sources */,
 				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,
 				DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */,
+				DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */,
 				DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */,
 				DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */,
 				DD1E39D729225420004E10B9 /* MainTabViewController.swift in Sources */,

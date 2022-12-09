@@ -99,17 +99,25 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         
-        if (collectionView == self.collectionAccounts) {
-            let name = accountsList[indexPath.row].name
-            print("Item selected at position " + indexPath.row.description + " is " + name)
-        } else if (collectionView == self.collectionData) {
-            let name = dataList[indexPath.row].name
-            print("Item selected at position " + indexPath.row.description + " is " + name)
-        }  else {
-            let name = othersList[indexPath.row].name
-            print("Item selected at position " + indexPath.row.description + " is " + name)
-        }
+        var indexData: [String: Int] = ["index": 2]
+        var name = ""
         
+        if (collectionView == self.collectionAccounts) {
+            name = accountsList[indexPath.row].name
+            indexData = ["index": 2]
+        } else if (collectionView == self.collectionData) {
+            name = dataList[indexPath.row].name
+            indexData = ["index": 1]
+        }  else if (collectionView == self.collectionOthers) {
+            name = othersList[indexPath.row].name
+            indexData = ["index": 0]
+        }  else {
+            name = "No Item"
+            indexData = ["index": 3]
+        }
+        print("Item selected at position " + indexPath.row.description + " is " + name)
+        NotificationCenter.default.post(name: Notification.Name("changeIndex"), object: nil, userInfo: indexData)
+
     }
     
     
