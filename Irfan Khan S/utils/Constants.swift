@@ -31,7 +31,7 @@ class Constants {
     
     
     // Table Account Transactions Data
-    let TABLE_ACCOUNT_TRANSACTIONS = "accounts"
+    let TABLE_ACCOUNT_TRANSACTIONS = "account_transactions"
     let ACCOUNT_TRANSACTIONS_COLUMN_ID = "id"
     let ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT = "amount"
     let ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE = "transaction_type"
