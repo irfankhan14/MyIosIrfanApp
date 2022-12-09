@@ -51,6 +51,10 @@
 		DD4166422941B92C006F1666 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166412941B92C006F1666 /* Utility.swift */; };
 		DD4166442941B977006F1666 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166432941B977006F1666 /* DatabaseManager.swift */; };
 		DD4166462941C106006F1666 /* irfan.db in Resources */ = {isa = PBXBuildFile; fileRef = DD4166452941C106006F1666 /* irfan.db */; };
+		DD4166482941E497006F1666 /* TransactionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166472941E497006F1666 /* TransactionsData.swift */; };
+		DD41664B2941F8F8006F1666 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166492941F8F8006F1666 /* AccountTableViewCell.swift */; };
+		DD41664C2941F8F8006F1666 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD41664A2941F8F8006F1666 /* AccountTableViewCell.xib */; };
+		DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41664D2941FA96006F1666 /* AccountsViewController.swift */; };
 		DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */; };
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
 		DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913E4B293F7B7200437A4B /* HomeItems.swift */; };
@@ -116,6 +120,10 @@
 		DD4166412941B92C006F1666 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		DD4166432941B977006F1666 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		DD4166452941C106006F1666 /* irfan.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = irfan.db; sourceTree = "<group>"; };
+		DD4166472941E497006F1666 /* TransactionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsData.swift; sourceTree = "<group>"; };
+		DD4166492941F8F8006F1666 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		DD41664A2941F8F8006F1666 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		DD41664D2941FA96006F1666 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD913E4B293F7B7200437A4B /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItems.swift; sourceTree = "<group>"; };
@@ -251,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				DD913E4B293F7B7200437A4B /* HomeItems.swift */,
+				DD4166472941E497006F1666 /* TransactionsData.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -260,6 +269,8 @@
 			children = (
 				DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */,
 				DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */,
+				DD4166492941F8F8006F1666 /* AccountTableViewCell.swift */,
+				DD41664A2941F8F8006F1666 /* AccountTableViewCell.xib */,
 			);
 			path = adapters;
 			sourceTree = "<group>";
@@ -268,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */,
+				DD41664D2941FA96006F1666 /* AccountsViewController.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -360,6 +372,7 @@
 				DD3D79352924D4F300B17382 /* ic_home_security.png in Resources */,
 				DD3D79242924D4F300B17382 /* ic_home_zerodha.png in Resources */,
 				DD35BE53291E503C006F6950 /* Main.storyboard in Resources */,
+				DD41664C2941F8F8006F1666 /* AccountTableViewCell.xib in Resources */,
 				DD3D792A2924D4F300B17382 /* ic_home_interview_qa.png in Resources */,
 				DD3D79302924D4F300B17382 /* ic_home_credit_card.png in Resources */,
 				DD3D79212924D4F300B17382 /* ic_other_services.png in Resources */,
@@ -382,6 +395,7 @@
 				DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */,
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
 				DD41663F2941B8C0006F1666 /* FMDatabase.m in Sources */,
+				DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */,
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
 				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,
 				DD4166422941B92C006F1666 /* Utility.swift in Sources */,
@@ -391,7 +405,9 @@
 				DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */,
 				DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */,
 				DD41663D2941B8C0006F1666 /* FMDatabaseQueue.m in Sources */,
+				DD4166482941E497006F1666 /* TransactionsData.swift in Sources */,
 				DD4166402941B8C0006F1666 /* FMDatabasePool.m in Sources */,
+				DD41664B2941F8F8006F1666 /* AccountTableViewCell.swift in Sources */,
 				DD1E39D729225420004E10B9 /* MainTabViewController.swift in Sources */,
 				DD41663C2941B8C0006F1666 /* FMDatabaseAdditions.m in Sources */,
 			);

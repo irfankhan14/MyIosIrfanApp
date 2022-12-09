@@ -239,18 +239,61 @@
         <!--Accounts-->
         <scene sceneID="P2w-Kb-MO5">
             <objects>
-                <viewController id="rec-XY-goQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountsViewController" id="rec-XY-goQ" customClass="AccountsViewController" customModule="Irfan_Khan_S" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j5i-nX-WcO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M65-37-r7T">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RF-zA-okb">
+                                        <rect key="frame" x="8" y="32" width="182" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-TA-eS6">
+                                        <rect key="frame" x="0.0" y="58" width="414" height="491"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transactions_cell" id="bnw-Cx-VHg">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="56"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnw-Cx-VHg" id="Sri-RZ-s9d">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="rec-XY-goQ" id="KGk-Ov-ch6"/>
+                                            <outlet property="delegate" destination="rec-XY-goQ" id="cCY-Vb-Uhl"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="946-ae-AxT"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="top" secondItem="j5i-nX-WcO" secondAttribute="top" id="MJ4-wV-LOC"/>
+                            <constraint firstItem="946-ae-AxT" firstAttribute="bottom" secondItem="M65-37-r7T" secondAttribute="bottom" id="ZtH-As-Ajr"/>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="leading" secondItem="946-ae-AxT" secondAttribute="leading" id="nIz-EB-6KW"/>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="trailing" secondItem="946-ae-AxT" secondAttribute="trailing" id="rz9-ta-5F3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Accounts" image="indianrupeesign.circle" catalog="system" selectedImage="indianrupeesign.circle.fill" id="Mp1-qE-fpI"/>
+                    <connections>
+                        <outlet property="tableAccounts" destination="zZe-TA-eS6" id="q1E-qX-bf7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7f-zv-e8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="798"/>
+            <point key="canvasLocation" x="2615.9420289855075" y="797.54464285714278"/>
         </scene>
         <!--News-->
         <scene sceneID="av8-7R-jQ3">
@@ -329,9 +372,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
