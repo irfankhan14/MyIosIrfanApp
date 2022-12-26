@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-protocol PopUpProtocol {
-    func addTrasaction(transactionData: TransactionsData)
+protocol TransactionsHandler {
+    func addTrasaction(transactionData: TransactionsData, addHome: Bool)
 }
 
 
 class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     static let identifier = "TransactionViewController"
-    var delegate: PopUpProtocol?
+    var delegate: TransactionsHandler?
     
     
     @IBOutlet weak var dialogView: UIView!
@@ -89,23 +89,24 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
     @IBAction func onTransactionAdd(_ sender: Any) {
         
         let amount = edtAmount.text ?? ""
+        let amountValue = Double(amount) ?? 0.0
         let transactionType = spnTransactionType.text ?? ""
         let reason = edtReason.text ?? ""
 
-        let validate = validateFields(amount: amount, transactionType: transactionType, reason: reason)
-        let addhome = onAddHome.isOn
+        let validate = validateFields(amount: amountValue, transactionType: transactionType, reason: reason)
         
         if (validate) {
+            let transactionData = TransactionsData(idValue: 0, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: "String", accountValue: "String")
             
+            self.delegate?.addTrasaction(transactionData: transactionData, addHome: onAddHome.isOn)
+            self.dismiss(animated: true, completion: nil)
         } else {
             self.showToast(message: NSLocalizedString("txt_incorrect_data", comment: ""), font: .systemFont(ofSize: 12.0))
         }
     }
     
-    private func validateFields(amount: String, transactionType: String, reason: String) -> Bool {
-        let amountValue = Double(amount) ?? 0.0
-        
-        if (amountValue == 0.0 || transactionType == "" || reason == "") {
+    private func validateFields(amount: Double, transactionType: String, reason: String) -> Bool {
+        if (amount == 0.0 || transactionType == "" || reason == "") {
             return false
         } else {
             return true
@@ -146,7 +147,7 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
             popupViewController.modalTransitionStyle = .crossDissolve
             
             //setting the delegate of the dialog box to the parent viewController
-            popupViewController.delegate = parentVC as? PopUpProtocol
+            popupViewController.delegate = parentVC as? TransactionsHandler
             
             //presenting the pop up viewController from the parent viewController
             parentVC.present(popupViewController, animated: true)

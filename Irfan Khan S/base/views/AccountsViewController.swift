@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AccountsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AccountsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionsHandler {
     
     @IBOutlet weak var txtTotalAmount: UILabel!
     @IBOutlet weak var tableAccounts: UITableView!
@@ -154,8 +154,11 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @objc func addTransaction() {
         print("Tapped on Add Transaction")
-        
         TransactionViewController.showPopup(parentVC: self)
     }
     
+    func addTrasaction(transactionData: TransactionsData, addHome: Bool) {
+        print(addHome)
+        print(transactionData)
+    }
 }
