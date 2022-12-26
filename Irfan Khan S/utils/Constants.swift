@@ -19,7 +19,6 @@ class Constants {
     let CONST_EMAIL = "EMAIL"
     let CONST_APP_STATUS = "APP_STATUS"
     let CONST_URL = "web_url"
-    let MyDatabase = MyAppData
     let ExemptReason = "ExemptReason"
     let MusicPlayerPackageName = "media.music.musicplayer"
     let NewsDateFormat = "yyyy-MM-dd'T'HH:mm:SSS"

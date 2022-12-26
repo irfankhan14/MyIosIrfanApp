@@ -106,23 +106,23 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func fetchImageType(accountType: String) -> UIImage {
-        if (accountType == Constants.init().ACCOUNT_SBI) {
+        if (accountType == Constants.init().ACCOUNTS_SBI) {
             return UIImage(named:"ic_home_sbi")!
-        } else if (accountType == Constants.init().ACCOUNT_ICICI) {
+        } else if (accountType == Constants.init().ACCOUNTS_ICICI) {
             return UIImage(named:"ic_home_icici")!
-        } else if (accountType == Constants.init().ACCOUNT_ICICI_CREDIT) {
+        } else if (accountType == Constants.init().ACCOUNTS_ICICI_CREDIT) {
             return UIImage(named:"ic_home_credit_card")!
-        } else if (accountType == Constants.init().ACCOUNT_ZERODHA) {
+        } else if (accountType == Constants.init().ACCOUNTS_ZERODHA) {
             return UIImage(named:"ic_home_zerodha")!
-        } else if (accountType == Constants.init().ACCOUNT_FAST_TAG) {
+        } else if (accountType == Constants.init().ACCOUNTS_FASTTAG) {
             return UIImage(named:"ic_home_fast_tag")!
-        } else if (accountType == Constants.init().ACCOUNT_PAYTM) {
+        } else if (accountType == Constants.init().ACCOUNTS_PAYTM) {
             return UIImage(named:"ic_home_paytm")!
-        } else if (accountType == Constants.init().ACCOUNT_PHONEPE) {
+        } else if (accountType == Constants.init().ACCOUNTS_PHONEPE) {
             return UIImage(named:"ic_home_phonepe")!
-        } else if (accountType == Constants.init().ACCOUNT_AMAZON_PAY) {
+        } else if (accountType == Constants.init().ACCOUNTS_AMAZON_PAY) {
             return UIImage(named:"ic_home_amazon_pay")!
-        } else if (accountType == Constants.init().ACCOUNT_PF) {
+        } else if (accountType == Constants.init().ACCOUNTS_PF) {
             return UIImage(named:"ic_home_pf")!
         } else {
             return UIImage(named:"ic_home_accounts_home")!
