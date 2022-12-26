@@ -59,7 +59,6 @@
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
 		DD71F1E3294C939900F7DD3F /* TransactionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */; };
 		DD71F1E5294C96EF00F7DD3F /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */; };
-		DD79F844295466A700531AA6 /* UtilityDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD79F843295466A700531AA6 /* UtilityDates.swift */; };
 		DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913E4B293F7B7200437A4B /* HomeItems.swift */; };
 		DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */; };
 		DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */; };
@@ -131,7 +130,6 @@
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionStoryboard.storyboard; sourceTree = "<group>"; };
 		DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
-		DD79F843295466A700531AA6 /* UtilityDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityDates.swift; sourceTree = "<group>"; };
 		DD913E4B293F7B7200437A4B /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItems.swift; sourceTree = "<group>"; };
 		DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				DD507FB2291FB478008FC8F9 /* Constants.swift */,
 				DD4166412941B92C006F1666 /* Utility.swift */,
 				DD4166432941B977006F1666 /* DatabaseManager.swift */,
-				DD79F843295466A700531AA6 /* UtilityDates.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,
 				DD4166422941B92C006F1666 /* Utility.swift in Sources */,
 				DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */,
-				DD79F844295466A700531AA6 /* UtilityDates.swift in Sources */,
 				DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */,
 				DD41663E2941B8C0006F1666 /* FMResultSet.m in Sources */,
 				DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */,

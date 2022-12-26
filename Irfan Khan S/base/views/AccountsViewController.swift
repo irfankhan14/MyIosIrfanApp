@@ -159,6 +159,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func addTrasaction(transactionData: TransactionsData, addHome: Bool) {
         print(addHome)
-        print(transactionData)
+        print(transactionData.timestamp)
     }
 }

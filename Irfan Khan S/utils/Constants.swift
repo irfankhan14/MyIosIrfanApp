@@ -218,4 +218,11 @@ class Constants {
         dateFormatter.dateFormat = toPattern
         return dateFormatter.string(from: date!)
     }
+    
+    func fetchCurrentTimestamp(pattern: String)-> String  {
+        let date = Date()
+        let dateFormattter = DateFormatter()
+        dateFormattter.dateFormat = pattern
+        return dateFormattter.string(from: date)
+    }
 }

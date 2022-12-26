@@ -96,7 +96,8 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
         let validate = validateFields(amount: amountValue, transactionType: transactionType, reason: reason)
         
         if (validate) {
-            let transactionData = TransactionsData(idValue: 0, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: "String", accountValue: "String")
+            let timestamp = Constants.init().fetchCurrentTimestamp(pattern: Constants.init().plainDateFormat())
+            let transactionData = TransactionsData(idValue: 0, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: timestamp, accountValue: "String")
             
             self.delegate?.addTrasaction(transactionData: transactionData, addHome: onAddHome.isOn)
             self.dismiss(animated: true, completion: nil)
