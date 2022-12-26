@@ -11,7 +11,8 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var txtTotalAmount: UILabel!
     @IBOutlet weak var tableAccounts: UITableView!
-
+    @IBOutlet weak var imgAddTransaction: UIImageView!
+    
     var transactionsList = Array<TransactionsData>()
     
     override func viewDidLoad() {
@@ -24,6 +25,18 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         let uiNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         tableAccounts.register(uiNib, forCellReuseIdentifier: "transactions_cell")
         //        tableAccounts.contentInset = UIEdgeInsets(top: 0, left: -24, bottom: 0, right: 0)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addTransaction))
+        imgAddTransaction.addGestureRecognizer(tap)
+        imgAddTransaction.isUserInteractionEnabled = true
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        let addIconSize = 48
+        imgAddTransaction.frame = CGRect(
+            x: Int(screenSize.width) - (addIconSize * Int(1.5)),
+            y: Int(screenSize.height) - (addIconSize * 3),
+            width: addIconSize,
+            height: addIconSize)
 
     }
     
@@ -137,6 +150,12 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             return UIImage(named:"ic_home_accounts_home")!
         }
+    }
+    
+    @objc func addTransaction() {
+        print("Tapped on Add Transaction")
+        
+        TransactionViewController.showPopup(parentVC: self)
     }
     
 }
