@@ -244,8 +244,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M65-37-r7T">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M65-37-r7T">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RF-zA-okb">
                                         <rect key="frame" x="8" y="32" width="182" height="30"/>
@@ -279,12 +280,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="946-ae-AxT"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
-                        <constraints>
-                            <constraint firstItem="M65-37-r7T" firstAttribute="top" secondItem="j5i-nX-WcO" secondAttribute="top" id="MJ4-wV-LOC"/>
-                            <constraint firstItem="946-ae-AxT" firstAttribute="bottom" secondItem="M65-37-r7T" secondAttribute="bottom" id="ZtH-As-Ajr"/>
-                            <constraint firstItem="M65-37-r7T" firstAttribute="leading" secondItem="946-ae-AxT" secondAttribute="leading" id="nIz-EB-6KW"/>
-                            <constraint firstItem="M65-37-r7T" firstAttribute="trailing" secondItem="946-ae-AxT" secondAttribute="trailing" id="rz9-ta-5F3"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Accounts" image="indianrupeesign.circle" catalog="system" selectedImage="indianrupeesign.circle.fill" id="Mp1-qE-fpI"/>
                     <connections>

@@ -19,18 +19,6 @@ class DatabaseManager: NSObject{
         return shareInstance
     }
     
-
-    func fetchDataSet(query: String) -> FMResultSet? {
-        shareInstance.database?.open()
-        var fmResultSet: FMResultSet? = nil
-        do {
-            fmResultSet = try shareInstance.database?.executeQuery(query, values: [Any]())
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-        return fmResultSet
-    }
     
     func fetchData(query: String) -> String{
         shareInstance.database?.open()
@@ -44,6 +32,7 @@ class DatabaseManager: NSObject{
         catch {
             print(error.localizedDescription)
         }
+        shareInstance.database?.close()
         return result
     }
     

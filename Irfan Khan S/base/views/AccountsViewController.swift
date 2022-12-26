@@ -11,7 +11,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var txtTotalAmount: UILabel!
     @IBOutlet weak var tableAccounts: UITableView!
-    
+
     var transactionsList = Array<TransactionsData>()
     
     override func viewDidLoad() {
@@ -24,9 +24,8 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         let uiNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         tableAccounts.register(uiNib, forCellReuseIdentifier: "transactions_cell")
         //        tableAccounts.contentInset = UIEdgeInsets(top: 0, left: -24, bottom: 0, right: 0)
-        
+
     }
-    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,33 +47,44 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func loadTransactions() {
         transactionsList.removeAll()
-        let transactionsResult = DatabaseManager.getInstance().fetchDataSet(query: "Select * from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS)
-        while transactionsResult?.next() == true {
-            
-            let idValue = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID)
-            let amountValue = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT)
-            
-            let id: Int = Int(idValue!) ?? 0
-            let amount: Double = Double(amountValue!) ?? 0.0
-            
-            let transactionType = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE)
-            let reason = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_REASON)
-            let timestamp = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP)
-            let accountType = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE)
-            
-            
-            transactionsList.append(
-                TransactionsData(
-                    idValue: id,
-                    amountValue: amount,
-                    transactionValue: transactionType!,
-                    reasonValue: reason!,
-                    timestampValue: timestamp!,
-                    accountValue: accountType!
+        
+        let dbInstance = DatabaseManager.getInstance()
+        
+        dbInstance.database?.open()
+        do {
+            let selectQuery = "Select * from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS
+            let transactionsResult = try dbInstance.database?.executeQuery(selectQuery, values: [Any]())
+            while transactionsResult?.next() == true {
+                
+                let idValue = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID)
+                let amountValue = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT)
+                
+                let id: Int = Int(idValue!) ?? 0
+                let amount: Double = Double(amountValue!) ?? 0.0
+                
+                let transactionType = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE)
+                let reason = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_REASON)
+                let timestamp = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP)
+                let accountType = transactionsResult?.string(forColumn: Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE)
+                
+                
+                transactionsList.append(
+                    TransactionsData(
+                        idValue: id,
+                        amountValue: amount,
+                        transactionValue: transactionType!,
+                        reasonValue: reason!,
+                        timestampValue: timestamp!,
+                        accountValue: accountType!
+                    )
                 )
-            )
-            
+                
+            }
         }
+        catch {
+            print(error.localizedDescription)
+        }
+        dbInstance.database?.close()
     }
     
     private func fetchTotalAmount() {
