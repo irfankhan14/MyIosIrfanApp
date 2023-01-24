@@ -310,6 +310,7 @@
 "title_app_usage"= "App Usage";
 "txt_asc"= "Asc";
 "txt_desc"= "Desc";
+"txt_do_update_delete" = "Do you want to update/delete this data?";
 
 
 "institute_name1"="Sri Gayathri English School";
