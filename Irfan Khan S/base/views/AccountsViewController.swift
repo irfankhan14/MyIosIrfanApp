@@ -59,12 +59,17 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableAccounts.dequeueReusableCell(withIdentifier: "transactions_cell", for: indexPath) as! AccountTableViewCell
         
-        cell.txtAmount.text = fetchAmount(amount: String(transactionsList[indexPath.row].amount))
-        cell.txtTransactionType.text = transactionsList[indexPath.row].transactionType
-        cell.txtTransactionType.textColor = fetchTransactionTypeColor(transactionType: transactionsList[indexPath.row].transactionType)
-        cell.txtReason.text = transactionsList[indexPath.row].reason
-        cell.txtTimestamp.text = fetchTimeStamp(timeStamp: transactionsList[indexPath.row].timestamp)
-        cell.imgAccountType.image = fetchImageType(accountType: transactionsList[indexPath.row].accountType)
+        let transactionData = transactionsList[indexPath.row]
+        if(transactionData.transactionType == Constants.init().TXT_CASH_WITHDRAWAL) {
+            transactionData.amount = -1 * transactionData.amount
+        }
+        
+        cell.txtAmount.text = "Rs. " + String(fetchTotalAmount(amount: String(transactionData.amount)))
+        cell.txtTransactionType.text = transactionData.transactionType
+        cell.txtTransactionType.textColor = fetchTransactionTypeColor(transactionType: transactionData.transactionType)
+        cell.txtReason.text = transactionData.reason
+        cell.txtTimestamp.text = fetchTimeStamp(timeStamp: transactionData.timestamp)
+        cell.imgAccountType.image = fetchImageType(accountType: transactionData.accountType)
         
         if(accountType != "") {
             cell.imgAccountType.isHidden = true
@@ -140,10 +145,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         return result
     }
     
-    private func fetchAmount(amount: String) -> String {
-        return "Rs. " + amount
-    }
-    
     private func fetchTransactionTypeColor(transactionType: String) -> UIColor {
         
         if (transactionType == Constants.init().TXT_CASH_DEPOSIT) {
@@ -192,6 +193,9 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func addTrasaction(transactionData: TransactionsData, addHome: Bool) {
+        if(transactionData.transactionType == Constants.init().TXT_CASH_WITHDRAWAL) {
+            transactionData.amount = -1 * transactionData.amount
+        }
         let main = "INSERT INTO " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " ("
         + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ", "
         + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + ", "
@@ -216,16 +220,58 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func handleTransactions(position: Int) {
-        let alert = UIAlertController(title: NSLocalizedString("txt_transactions", comment: ""), message: "Do you want to update/delete this data?", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(
+            title: NSLocalizedString("txt_transactions", comment: ""),
+            message: NSLocalizedString("txt_do_update_delete", comment: ""),
+            preferredStyle: UIAlertController.Style.alert)
 
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("txt_update", comment: ""), style: UIAlertAction.Style.default, handler: nil))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("txt_delete", comment: ""), style: UIAlertAction.Style.default, handler: nil))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("txt_cancel", comment: ""), style: UIAlertAction.Style.destructive, handler: nil))
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("txt_update", comment: ""),
+            style: UIAlertAction.Style.default,
+            handler: { action in
+                self.updateTransaction(position: position)
+            })
+        )
+
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("txt_delete", comment: ""),
+            style: UIAlertAction.Style.default,
+            handler: { action in
+                self.deleteTransaction(position: position)
+            })
+        )
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("txt_cancel", comment: ""),
+            style: UIAlertAction.Style.destructive, handler: nil))
                 
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+    
+    private func deleteTransaction(position: Int) {
+        print("deleteTransaction::", position)
+        let transaction = transactionsList[position]
+        let query = "Delete from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " where " + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID + " = '" + String(transaction.id) + "'"
+        
+        let result = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
+        if(result) {
+            reloadData()
+        }
+    }
+    
+    private func updateTransaction(position: Int) {
+        print("updateTransaction::", position)
+        
+//        let transaction = transactionsList[position]
+//        let query = "Delete from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " where " + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID + "'" + String(transaction.id) + "'"
+//
+//        let result = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
+//        if(result) {
+//            reloadData()
+//        }
+    }
+    
     
     private func reloadData() {
         loadTransactions()
