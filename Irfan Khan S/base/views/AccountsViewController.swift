@@ -81,7 +81,9 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        handleTransactions(position: indexPath.row)
+        if (accountType != "") {
+            handleTransactions(position: indexPath.row)
+        }
     }
     
     private func loadTransactions() {
@@ -189,10 +191,10 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func addTransaction() {
-        TransactionViewController.showPopup(parentVC: self)
+        TransactionViewController.showPopup(parentVC: self, data: nil)
     }
     
-    func addTrasaction(transactionData: TransactionsData, addHome: Bool) {
+    func insertTransaction(transactionData: TransactionsData, addHome: Bool) {
         if(transactionData.transactionType == Constants.init().TXT_CASH_WITHDRAWAL) {
             transactionData.amount = -1 * transactionData.amount
         }
@@ -217,6 +219,24 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         
         reloadData()
         
+    }
+    
+    func updateTransaction(transactionData: TransactionsData) {
+        if(transactionData.transactionType == Constants.init().TXT_CASH_WITHDRAWAL) {
+            transactionData.amount = -1 * transactionData.amount
+        }
+        let query = "Update " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " set " +
+        Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + " = '" + String(transactionData.amount) + "'," +
+        Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + " = '" + transactionData.transactionType + "'," +
+        Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_REASON + " = '" + transactionData.reason + "'," +
+        Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + " = '" + transactionData.timestamp + "'" +
+        " where " +
+        Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID + " = '" + String(transactionData.id) + "'"
+
+        let result = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
+        if(result) {
+            reloadData()
+        }
     }
     
     private func handleTransactions(position: Int) {
@@ -250,7 +270,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func deleteTransaction(position: Int) {
-        print("deleteTransaction::", position)
         let transaction = transactionsList[position]
         let query = "Delete from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " where " + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID + " = '" + String(transaction.id) + "'"
         
@@ -261,15 +280,8 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func updateTransaction(position: Int) {
-        print("updateTransaction::", position)
-        
-//        let transaction = transactionsList[position]
-//        let query = "Delete from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " where " + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ID + "'" + String(transaction.id) + "'"
-//
-//        let result = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
-//        if(result) {
-//            reloadData()
-//        }
+        let transaction = transactionsList[position]
+        TransactionViewController.showPopup(parentVC: self, data: transaction)
     }
     
     

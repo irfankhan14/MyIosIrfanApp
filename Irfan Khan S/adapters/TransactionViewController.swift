@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 protocol TransactionsHandler {
-    func addTrasaction(transactionData: TransactionsData, addHome: Bool)
+    func insertTransaction(transactionData: TransactionsData, addHome: Bool)
+    func updateTransaction(transactionData: TransactionsData)
 }
 
 
@@ -29,6 +30,7 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
 
     
     var transactionTypeList = Array<String>()
+    var updatedTransactionData: TransactionsData? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,15 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
         spnTransactionType.text = NSLocalizedString("transactions_type1", comment: "")
         edtReason.placeholder = NSLocalizedString("txt_enter_reason", comment: "")
         
+        if (updatedTransactionData != nil) {
+            var updatedAmount: Double = updatedTransactionData?.amount ?? 0.0
+            if(updatedTransactionData?.transactionType == Constants.init().TXT_CASH_WITHDRAWAL) {
+                updatedAmount = -1 * updatedAmount
+            }
+            edtAmount.text = String(updatedAmount)
+            spnTransactionType.text = updatedTransactionData?.transactionType
+            edtReason.text = updatedTransactionData?.reason
+        }
     }
     
     @objc
@@ -97,9 +108,16 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
         
         if (validate) {
             let timestamp = Constants.init().fetchCurrentTimestamp(pattern: Constants.init().plainDateFormat())
-            let transactionData = TransactionsData(idValue: 0, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: timestamp, accountValue: "")
             
-            self.delegate?.addTrasaction(transactionData: transactionData, addHome: onAddHome.isOn)
+            let id: Int = updatedTransactionData?.id ?? 0
+            let transactionData = TransactionsData(idValue: id, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: timestamp, accountValue: "")
+            
+            if(updatedTransactionData == nil) {
+                self.delegate?.insertTransaction(transactionData: transactionData, addHome: onAddHome.isOn)
+            } else {
+                self.delegate?.updateTransaction(transactionData: transactionData)
+            }
+            
             self.dismiss(animated: true, completion: nil)
         } else {
             self.showToast(message: NSLocalizedString("txt_incorrect_data", comment: ""), font: .systemFont(ofSize: 12.0))
@@ -141,17 +159,24 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
     }
     
     //MARK:- functions for the viewController
-    static func showPopup(parentVC: UIViewController){
+    static func showPopup(parentVC: UIViewController, data: TransactionsData?) {
+        
         //creating a reference for the dialogView controller
         if let popupViewController = UIStoryboard(name: "TransactionStoryboard", bundle: nil).instantiateViewController(withIdentifier: "TransactionViewController") as? TransactionViewController {
             popupViewController.modalPresentationStyle = .custom
             popupViewController.modalTransitionStyle = .crossDissolve
             
+            
             //setting the delegate of the dialog box to the parent viewController
             popupViewController.delegate = parentVC as? TransactionsHandler
+            popupViewController.updatedTransactionData = data
             
             //presenting the pop up viewController from the parent viewController
             parentVC.present(popupViewController, animated: true)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        updatedTransactionData = nil
     }
 }
