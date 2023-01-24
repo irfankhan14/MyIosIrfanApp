@@ -18,22 +18,25 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     var accountType: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear::" + accountType)
+        loadTransactions()
+        fetchTotalAmount()
+        tableAccounts.reloadData()
+        
+        if(accountType == "") {
+            imgAddTransaction.isHidden = true
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         accountType = ""
-        print("viewDidDisappear::" + accountType)
+        imgAddTransaction.isHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        print("viewDidLoad::" + accountType)
-        loadTransactions()
-        fetchTotalAmount()
+
         
         let uiNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         tableAccounts.register(uiNib, forCellReuseIdentifier: "transactions_cell")
@@ -50,7 +53,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
             y: Int(screenSize.height) - (addIconSize * 3),
             width: addIconSize,
             height: addIconSize)
-
     }
     
     
@@ -78,7 +80,11 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         
         dbInstance.database?.open()
         do {
-            let selectQuery = "Select * from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS
+            var stmt = ""
+            if (accountType != "") {
+                stmt = " where " +  Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE + "='" + accountType + "'"
+            }
+            let selectQuery = "Select * from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + stmt
             let transactionsResult = try dbInstance.database?.executeQuery(selectQuery, values: [Any]())
             while transactionsResult?.next() == true {
                 
@@ -114,7 +120,12 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func fetchTotalAmount() {
-        let totalAmount = DatabaseManager.getInstance().fetchData(query: "Select sum(" + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ") from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS)
+        var stmt = ""
+        if (accountType != "") {
+            stmt = " where " +  Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE + "='" + accountType + "'"
+        }
+        let selectQuery = "Select sum(" + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ") from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + stmt
+        let totalAmount = DatabaseManager.getInstance().fetchData(query: selectQuery)
         txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + totalAmount
     }
     

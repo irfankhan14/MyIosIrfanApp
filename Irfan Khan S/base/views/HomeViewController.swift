@@ -121,8 +121,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         
-        print(indexPath.row)
-
         if (collectionView == self.collectionAccounts) {
             var accountsVC : AccountsViewController? = nil
             if let tabArrController = tabBarController?.viewControllers {
