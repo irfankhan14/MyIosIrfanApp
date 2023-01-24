@@ -34,7 +34,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Do any additional setup after loading the view.
 
-        
         let uiNib = UINib(nibName: "AccountTableViewCell", bundle: nil)
         tableAccounts.register(uiNib, forCellReuseIdentifier: "transactions_cell")
         //        tableAccounts.contentInset = UIEdgeInsets(top: 0, left: -24, bottom: 0, right: 0)
@@ -69,6 +68,8 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if(accountType != "") {
             cell.imgAccountType.isHidden = true
+        } else {
+            cell.imgAccountType.isHidden = false
         }
         
         return cell
@@ -200,11 +201,11 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         + transactionData.timestamp + "','"
         
         let query = main + accountType + "')"
-        let result = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
+        DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
         
         if(addHome) {
             let queryHome = main + Constants.init().ACCOUNTS_HOME + "')"
-            let resultHome = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: queryHome)
+            DatabaseManager.getInstance().handleInsertDeleteUpdate(query: queryHome)
         }
         
         reloadData()
