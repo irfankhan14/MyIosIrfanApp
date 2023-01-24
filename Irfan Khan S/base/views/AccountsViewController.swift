@@ -75,6 +75,10 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handleTransactions(position: indexPath.row)
+    }
+    
     private func loadTransactions() {
         transactionsList.removeAll()
         
@@ -184,7 +188,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func addTransaction() {
-        print("Tapped on Add Transaction")
         TransactionViewController.showPopup(parentVC: self)
     }
     
@@ -210,6 +213,18 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         
         reloadData()
         
+    }
+    
+    private func handleTransactions(position: Int) {
+        let alert = UIAlertController(title: NSLocalizedString("txt_transactions", comment: ""), message: "Do you want to update/delete this data?", preferredStyle: UIAlertController.Style.alert)
+
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("txt_update", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("txt_delete", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("txt_cancel", comment: ""), style: UIAlertAction.Style.destructive, handler: nil))
+                
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func reloadData() {
