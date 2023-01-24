@@ -97,7 +97,7 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
         
         if (validate) {
             let timestamp = Constants.init().fetchCurrentTimestamp(pattern: Constants.init().plainDateFormat())
-            let transactionData = TransactionsData(idValue: 0, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: timestamp, accountValue: "String")
+            let transactionData = TransactionsData(idValue: 0, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: timestamp, accountValue: "")
             
             self.delegate?.addTrasaction(transactionData: transactionData, addHome: onAddHome.isOn)
             self.dismiss(animated: true, completion: nil)

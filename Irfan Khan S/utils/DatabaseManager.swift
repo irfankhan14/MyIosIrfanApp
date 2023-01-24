@@ -19,6 +19,12 @@ class DatabaseManager: NSObject{
         return shareInstance
     }
     
+    func handleInsertDeleteUpdate(query: String) -> Bool{
+        shareInstance.database?.open()
+        let isSave = shareInstance.database?.executeUpdate(query, withArgumentsIn: [])
+        shareInstance.database?.close()
+        return isSave!
+    }
     
     func fetchData(query: String) -> String{
         shareInstance.database?.open()

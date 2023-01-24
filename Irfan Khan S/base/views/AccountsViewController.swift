@@ -18,10 +18,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     var accountType: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
-        loadTransactions()
-        fetchTotalAmount()
-        tableAccounts.reloadData()
-        
+        reloadData()
         if(accountType == "") {
             imgAddTransaction.isHidden = true
         }
@@ -191,7 +188,32 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func addTrasaction(transactionData: TransactionsData, addHome: Bool) {
-        print(addHome)
-        print(transactionData.timestamp)
+        let main = "INSERT INTO " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + " ("
+        + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ", "
+        + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + ", "
+        + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_REASON + ", "
+        + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ", "
+        + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE + ") values ('"
+        + String(transactionData.amount) + "','"
+        + transactionData.transactionType + "','"
+        + transactionData.reason + "','"
+        + transactionData.timestamp + "','"
+        
+        let query = main + accountType + "')"
+        let result = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: query)
+        
+        if(addHome) {
+            let queryHome = main + Constants.init().ACCOUNTS_HOME + "')"
+            let resultHome = DatabaseManager.getInstance().handleInsertDeleteUpdate(query: queryHome)
+        }
+        
+        reloadData()
+        
+    }
+    
+    private func reloadData() {
+        loadTransactions()
+        fetchTotalAmount()
+        tableAccounts.reloadData()
     }
 }
