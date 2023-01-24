@@ -57,12 +57,15 @@
 		DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41664D2941FA96006F1666 /* AccountsViewController.swift */; };
 		DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */; };
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
+		DD654553297EA01500BE90D7 /* UtitlityDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD654552297EA01500BE90D7 /* UtitlityDates.swift */; };
 		DD71F1E3294C939900F7DD3F /* TransactionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */; };
 		DD71F1E5294C96EF00F7DD3F /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */; };
 		DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913E4B293F7B7200437A4B /* HomeItems.swift */; };
+		DDD42B4E297BA9BE0005C6FC /* CustomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD42B4D297BA9BE0005C6FC /* CustomCardView.swift */; };
 		DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */; };
 		DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */; };
 		DDD88C5E29267056003B3BD2 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */; };
+		DDFD5B36297E4AA8009CC24D /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD5B35297E4AA8009CC24D /* DashBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,12 +131,15 @@
 		DD41664D2941FA96006F1666 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DD654552297EA01500BE90D7 /* UtitlityDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtitlityDates.swift; sourceTree = "<group>"; };
 		DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionStoryboard.storyboard; sourceTree = "<group>"; };
 		DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		DD913E4B293F7B7200437A4B /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItems.swift; sourceTree = "<group>"; };
+		DDD42B4D297BA9BE0005C6FC /* CustomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardView.swift; sourceTree = "<group>"; };
 		DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		DDFD5B35297E4AA8009CC24D /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +261,8 @@
 				DD507FB2291FB478008FC8F9 /* Constants.swift */,
 				DD4166412941B92C006F1666 /* Utility.swift */,
 				DD4166432941B977006F1666 /* DatabaseManager.swift */,
+				DDD42B4D297BA9BE0005C6FC /* CustomCardView.swift */,
+				DD654552297EA01500BE90D7 /* UtitlityDates.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -286,6 +294,7 @@
 			children = (
 				DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */,
 				DD41664D2941FA96006F1666 /* AccountsViewController.swift */,
+				DDFD5B35297E4AA8009CC24D /* DashBoardViewController.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -415,8 +424,11 @@
 				DD4166482941E497006F1666 /* TransactionsData.swift in Sources */,
 				DD71F1E5294C96EF00F7DD3F /* TransactionViewController.swift in Sources */,
 				DD4166402941B8C0006F1666 /* FMDatabasePool.m in Sources */,
+				DDD42B4E297BA9BE0005C6FC /* CustomCardView.swift in Sources */,
 				DD41664B2941F8F8006F1666 /* AccountTableViewCell.swift in Sources */,
+				DDFD5B36297E4AA8009CC24D /* DashBoardViewController.swift in Sources */,
 				DD1E39D729225420004E10B9 /* MainTabViewController.swift in Sources */,
+				DD654553297EA01500BE90D7 /* UtitlityDates.swift in Sources */,
 				DD41663C2941B8C0006F1666 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

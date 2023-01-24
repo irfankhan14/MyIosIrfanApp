@@ -45,24 +45,11 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
     private func setDialogViewParams() {
         
         //customizing the dialog box view
-        //        dialogView.layer.cornerRadius = 6.0
-        //        dialogView.layer.borderWidth = 1.2
+                
+        dialogView.layer.cornerRadius = 6.0
+        dialogView.layer.borderWidth = 1.2
         dialogView.layer.borderColor = UIColor(named: "dialogBoxGray")?.cgColor
         
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        let padding = 12
-        dialogView.frame = CGRect(
-            x: (padding),
-            y: (300),
-            width: Int(screenSize.width) - (padding*2),
-            height: 400)
-        
-        //        dialogView.frame = CGRect(
-        //            x: (padding),
-        //            y: (padding),
-        //            width: Int(screenSize.width) - (padding*2),
-        //            height: Int(screenSize.height) - (padding*2))
         
         let pickerView = UIPickerView()
         pickerView.dataSource = self
