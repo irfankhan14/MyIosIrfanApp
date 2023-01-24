@@ -15,10 +15,23 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var transactionsList = Array<TransactionsData>()
     
+    var accountType: String = ""
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear::" + accountType)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        accountType = ""
+        print("viewDidDisappear::" + accountType)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        print("viewDidLoad::" + accountType)
         loadTransactions()
         fetchTotalAmount()
         

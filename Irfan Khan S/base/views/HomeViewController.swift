@@ -121,25 +121,26 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         
-//        var indexData: [String: Int] = ["index": 2]
-//        var name = ""
-//        
-//        if (collectionView == self.collectionAccounts) {
-//            name = accountsList[indexPath.row].name
-//            indexData = ["index": 2]
-//        } else if (collectionView == self.collectionData) {
-//            name = dataList[indexPath.row].name
-//            indexData = ["index": 1]
-//        }  else if (collectionView == self.collectionOthers) {
-//            name = othersList[indexPath.row].name
-//            indexData = ["index": 0]
-//        }  else {
-//            name = "No Item"
-//            indexData = ["index": 3]
-//        }
-//        print("Item selected at position " + indexPath.row.description + " is " + name)
-//        NotificationCenter.default.post(name: Notification.Name("changeIndex"), object: nil, userInfo: indexData)
-        
+        print(indexPath.row)
+
+        if (collectionView == self.collectionAccounts) {
+            var accountsVC : AccountsViewController? = nil
+            if let tabArrController = tabBarController?.viewControllers {
+                for vc in tabArrController {
+                    if vc is AccountsViewController {
+                        accountsVC = vc as? AccountsViewController
+                    }
+                }
+            }
+            accountsVC?.accountType = fetchAccountType(type: accountsList[indexPath.row].name)
+            self.tabBarController?.selectedIndex = 2
+        } else if (collectionView == self.collectionData) {
+
+        }  else if (collectionView == self.collectionOthers) {
+
+        }  else {
+
+        }
     }
     
     
@@ -198,5 +199,31 @@ class HomeViewController: UIViewController, UICollectionViewDelegate,
         othersList.append(HomeItems(idValue: 27, nameValue: NSLocalizedString("txt_my_songs", comment: ""), imageValue: UIImage(named: "ic_songs")!))
         othersList.append(HomeItems(idValue: 28, nameValue: NSLocalizedString("txt_services", comment: ""), imageValue: UIImage(named: "ic_other_services")!))
         othersList.append(HomeItems(idValue: 29, nameValue: NSLocalizedString("txt_log_out", comment: ""), imageValue: UIImage(named: "ic_home_logout")!))
+    }
+    
+    private func fetchAccountType(type: String) -> String {
+        var accountType = ""
+        if (type == NSLocalizedString("txt_sbi", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_SBI
+        } else if (type == NSLocalizedString("txt_icici", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_ICICI
+        } else if (type == NSLocalizedString("txt_icici_credit", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_ICICI_CREDIT
+        } else if (type == NSLocalizedString("txt_zerodha", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_ZERODHA
+        } else if (type == NSLocalizedString("txt_paytm", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_PAYTM
+        } else if (type == NSLocalizedString("txt_amazon_pay", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_AMAZON_PAY
+        } else if (type == NSLocalizedString("txt_phonepe", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_PHONEPE
+        } else if (type == NSLocalizedString("txt_pf", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_PF
+        } else if (type == NSLocalizedString("txt_fast_tag", comment: "")) {
+            accountType = Constants.init().ACCOUNTS_FASTTAG
+        } else {
+            accountType = Constants.init().ACCOUNTS_HOME
+        }
+        return accountType
     }
 }
