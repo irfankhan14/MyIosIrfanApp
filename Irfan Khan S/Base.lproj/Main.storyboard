@@ -244,20 +244,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M65-37-r7T">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M65-37-r7T">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RF-zA-okb">
-                                        <rect key="frame" x="8" y="32" width="182" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RF-zA-okb">
+                                        <rect key="frame" x="12" y="48" width="182" height="30"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-TA-eS6">
-                                        <rect key="frame" x="0.0" y="58" width="414" height="491"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-TA-eS6">
+                                        <rect key="frame" x="0.0" y="96" width="414" height="813"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transactions_cell" id="bnw-Cx-VHg">
@@ -274,16 +271,36 @@
                                             <outlet property="delegate" destination="rec-XY-goQ" id="cCY-Vb-Uhl"/>
                                         </connections>
                                     </tableView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tmw-B6-d2R">
-                                        <rect key="frame" x="340" y="559" width="48" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tmw-B6-d2R">
+                                        <rect key="frame" x="358" y="767" width="32" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="HDv-Bm-jIN"/>
+                                            <constraint firstAttribute="width" constant="32" id="hk6-qT-gbg"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="3RF-zA-okb" firstAttribute="top" secondItem="M65-37-r7T" secondAttribute="top" constant="48" id="1kD-s4-Q76"/>
+                                    <constraint firstItem="zZe-TA-eS6" firstAttribute="width" secondItem="M65-37-r7T" secondAttribute="width" id="Ehe-IJ-kmV"/>
+                                    <constraint firstAttribute="trailing" secondItem="tmw-B6-d2R" secondAttribute="trailing" constant="24" id="Lb1-zy-lKv"/>
+                                    <constraint firstItem="zZe-TA-eS6" firstAttribute="top" secondItem="3RF-zA-okb" secondAttribute="bottom" constant="18" id="MrL-2C-nh5"/>
+                                    <constraint firstItem="3RF-zA-okb" firstAttribute="leading" secondItem="M65-37-r7T" secondAttribute="leading" constant="12" id="TWA-AR-MGA"/>
+                                    <constraint firstItem="tmw-B6-d2R" firstAttribute="top" secondItem="M65-37-r7T" secondAttribute="bottom" constant="-48" id="qAD-qy-wyf"/>
+                                    <constraint firstItem="zZe-TA-eS6" firstAttribute="height" secondItem="M65-37-r7T" secondAttribute="height" id="uyY-sA-z77"/>
+                                    <constraint firstItem="zZe-TA-eS6" firstAttribute="leading" secondItem="M65-37-r7T" secondAttribute="leading" id="xwy-pW-6Vd"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="946-ae-AxT"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="leading" secondItem="946-ae-AxT" secondAttribute="leading" id="AgF-j6-gkL"/>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="width" secondItem="j5i-nX-WcO" secondAttribute="width" id="E20-zr-qqv"/>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="top" secondItem="j5i-nX-WcO" secondAttribute="top" id="EZP-KL-VB9"/>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="trailing" secondItem="946-ae-AxT" secondAttribute="trailing" id="fRN-wk-5Cy"/>
+                            <constraint firstItem="M65-37-r7T" firstAttribute="bottom" secondItem="946-ae-AxT" secondAttribute="bottom" id="h3P-87-xie"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Accounts" image="indianrupeesign.circle" catalog="system" selectedImage="indianrupeesign.circle.fill" id="Mp1-qE-fpI"/>
                     <connections>

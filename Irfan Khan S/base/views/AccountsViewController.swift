@@ -42,13 +42,6 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         imgAddTransaction.addGestureRecognizer(tap)
         imgAddTransaction.isUserInteractionEnabled = true
         
-        let screenSize: CGRect = UIScreen.main.bounds
-        let addIconSize = 48
-        imgAddTransaction.frame = CGRect(
-            x: Int(screenSize.width) - (addIconSize * Int(1.5)),
-            y: Int(screenSize.height) - (addIconSize * 3),
-            width: addIconSize,
-            height: addIconSize)
     }
     
     
@@ -263,7 +256,10 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         )
         alert.addAction(UIAlertAction(
             title: NSLocalizedString("txt_cancel", comment: ""),
-            style: UIAlertAction.Style.destructive, handler: nil))
+            style: UIAlertAction.Style.destructive, handler: { action in
+                self.tableAccounts.reloadData()
+            })
+        )
                 
         // show the alert
         self.present(alert, animated: true, completion: nil)
