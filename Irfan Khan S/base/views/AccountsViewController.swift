@@ -70,6 +70,10 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.txtTimestamp.text = fetchTimeStamp(timeStamp: transactionsList[indexPath.row].timestamp)
         cell.imgAccountType.image = fetchImageType(accountType: transactionsList[indexPath.row].accountType)
         
+        if(accountType != "") {
+            cell.imgAccountType.isHidden = true
+        }
+        
         return cell
     }
     
@@ -126,7 +130,12 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let selectQuery = "Select sum(" + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ") from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + stmt
         let totalAmount = DatabaseManager.getInstance().fetchData(query: selectQuery)
-        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + totalAmount
+        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + String(fetchTotalAmount(amount: totalAmount))
+    }
+    
+    private func fetchTotalAmount(amount: String) -> Double {
+        let  result = Double(amount) ?? 0.0
+        return result
     }
     
     private func fetchAmount(amount: String) -> String {
