@@ -152,9 +152,9 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func fetchTimeStamp(timeStamp: String) -> String {
-        let result = Constants.init().convertDateFormat(
-            fromPattern: Constants.init().plainDateFormat(),
-            toPattern: Constants.init().normalDateFormat(),
+        let result = UtilityDates().convertDateFormat(
+            fromPattern: UtilityDates().plainDateFormat(),
+            toPattern: UtilityDates().normalDateFormat(),
             date: timeStamp)
         return result
     }

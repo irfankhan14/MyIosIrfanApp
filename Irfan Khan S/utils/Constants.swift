@@ -203,26 +203,4 @@ class Constants {
     let TXT_CASH_WITHDRAWAL = "Cash Withdrawal"
     let TXT_CASH_BACK = "Cash Back"
     
-    func normalDateFormat() -> String {
-        return TXT_DATE_FORMAT + " " + TXT_TIME_FORMAT
-    }
-    
-    func plainDateFormat() -> String {
-        return TXT_DATE_FORMAT.replacingOccurrences(of: "-", with: "") + TXT_TIME_FORMAT.replacingOccurrences(of: ":", with: "")
-    }
-    
-    func convertDateFormat(fromPattern: String, toPattern: String, date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = fromPattern
-        let date = dateFormatter.date(from: date)
-        dateFormatter.dateFormat = toPattern
-        return dateFormatter.string(from: date!)
-    }
-    
-    func fetchCurrentTimestamp(pattern: String)-> String  {
-        let date = Date()
-        let dateFormattter = DateFormatter()
-        dateFormattter.dateFormat = pattern
-        return dateFormattter.string(from: date)
-    }
 }

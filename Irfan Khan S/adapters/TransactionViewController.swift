@@ -94,7 +94,7 @@ class TransactionViewController: UIViewController , UIPickerViewDelegate, UIPick
         let validate = validateFields(amount: amountValue, transactionType: transactionType, reason: reason)
         
         if (validate) {
-            let timestamp = Constants.init().fetchCurrentTimestamp(pattern: Constants.init().plainDateFormat())
+            let timestamp = UtilityDates().fetchCurrentTimestamp(pattern: UtilityDates().plainDateFormat())
             
             let id: Int = updatedTransactionData?.id ?? 0
             let transactionData = TransactionsData(idValue: id, amountValue: amountValue, transactionValue: transactionType, reasonValue: reason, timestampValue: timestamp, accountValue: "")
