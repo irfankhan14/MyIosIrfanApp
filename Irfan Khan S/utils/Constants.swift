@@ -21,7 +21,7 @@ class Constants {
     let CONST_URL = "web_url"
     let ExemptReason = "ExemptReason"
     let MusicPlayerPackageName = "media.music.musicplayer"
-    let NewsDateFormat = "yyyy-MM-dd'T'HH:mm:SSS"
+    let NewsDateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
 
     let TXT_DATE_FORMAT = "yyyy-MM-dd"
     let TXT_TIME_FORMAT = "HH:mm"

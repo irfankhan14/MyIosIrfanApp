@@ -55,4 +55,10 @@ extension String {
         return self.range(of: find, options: .caseInsensitive) != nil
     }
     
+    func subStringData(str: String, start: Int, end : Int) -> String
+    {
+        let startIndex = str.index(str.startIndex, offsetBy: start)
+        let endIndex = str.index(str.startIndex, offsetBy: end)
+        return String(str[startIndex..<endIndex])
+    }
 }

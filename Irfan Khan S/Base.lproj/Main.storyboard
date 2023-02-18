@@ -605,10 +605,51 @@
                     <view key="view" contentMode="scaleToFill" id="gas-4N-tiC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikq-Tj-WMn" userLabel="MainView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="208" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8We-0b-03r">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="news_feed_cell" id="wo7-6o-Llt">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="208"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wo7-6o-Llt" id="Wbv-mw-hdU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="208"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="GDe-Iv-Koa" id="1kh-aC-vaT"/>
+                                            <outlet property="delegate" destination="GDe-Iv-Koa" id="wkp-uv-mkk"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8We-0b-03r" secondAttribute="trailing" id="1hj-70-Vj4"/>
+                                    <constraint firstAttribute="bottom" secondItem="8We-0b-03r" secondAttribute="bottom" id="2dl-ed-rxg"/>
+                                    <constraint firstItem="8We-0b-03r" firstAttribute="top" secondItem="Ikq-Tj-WMn" secondAttribute="top" id="8NU-ZY-dSt"/>
+                                    <constraint firstItem="8We-0b-03r" firstAttribute="leading" secondItem="Ikq-Tj-WMn" secondAttribute="leading" id="W2j-QV-10E"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rye-gR-wGp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rye-gR-wGp" firstAttribute="trailing" secondItem="Ikq-Tj-WMn" secondAttribute="trailing" id="LXa-LW-zcd"/>
+                            <constraint firstItem="Ikq-Tj-WMn" firstAttribute="top" secondItem="gas-4N-tiC" secondAttribute="top" id="bJ8-ZA-LP0"/>
+                            <constraint firstItem="Ikq-Tj-WMn" firstAttribute="leading" secondItem="rye-gR-wGp" secondAttribute="leading" id="f6x-fz-kEi"/>
+                            <constraint firstItem="rye-gR-wGp" firstAttribute="bottom" secondItem="Ikq-Tj-WMn" secondAttribute="bottom" id="w2D-I0-k3x"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" image="newspaper" catalog="system" selectedImage="newspaper.fill" id="SYO-X6-GOu"/>
+                    <connections>
+                        <outlet property="tableNews" destination="8We-0b-03r" id="jqb-tj-jZk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVV-9k-4oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

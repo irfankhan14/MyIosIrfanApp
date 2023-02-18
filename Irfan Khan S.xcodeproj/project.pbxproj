@@ -57,9 +57,12 @@
 		DD41664B2941F8F8006F1666 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4166492941F8F8006F1666 /* AccountTableViewCell.swift */; };
 		DD41664C2941F8F8006F1666 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD41664A2941F8F8006F1666 /* AccountTableViewCell.xib */; };
 		DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41664D2941FA96006F1666 /* AccountsViewController.swift */; };
+		DD4D2325298A7EB50090E8BE /* ic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4D2324298A7EB50090E8BE /* ic_placeholder.png */; };
 		DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */; };
 		DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD507FB2291FB478008FC8F9 /* Constants.swift */; };
 		DD654553297EA01500BE90D7 /* UtitlityDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD654552297EA01500BE90D7 /* UtitlityDates.swift */; };
+		DD7055AC2988D9B9005B548F /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7055AA2988D9B9005B548F /* NewsFeedTableViewCell.swift */; };
+		DD7055AD2988D9B9005B548F /* NewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7055AB2988D9B9005B548F /* NewsFeedTableViewCell.xib */; };
 		DD71F1E3294C939900F7DD3F /* TransactionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */; };
 		DD71F1E5294C96EF00F7DD3F /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */; };
 		DD913E4C293F7B7200437A4B /* HomeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913E4B293F7B7200437A4B /* HomeItems.swift */; };
@@ -135,9 +138,12 @@
 		DD4166492941F8F8006F1666 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		DD41664A2941F8F8006F1666 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		DD41664D2941FA96006F1666 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		DD4D2324298A7EB50090E8BE /* ic_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_placeholder.png; sourceTree = "<group>"; };
 		DD507FB0291FB06F008FC8F9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		DD507FB2291FB478008FC8F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD654552297EA01500BE90D7 /* UtitlityDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtitlityDates.swift; sourceTree = "<group>"; };
+		DD7055AA2988D9B9005B548F /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
+		DD7055AB2988D9B9005B548F /* NewsFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedTableViewCell.xib; sourceTree = "<group>"; };
 		DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionStoryboard.storyboard; sourceTree = "<group>"; };
 		DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		DD913E4B293F7B7200437A4B /* HomeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItems.swift; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 		DD3D79022924D4F300B17382 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				DD4D2324298A7EB50090E8BE /* ic_placeholder.png */,
 				DD3D79032924D4F300B17382 /* ic_songs.png */,
 				DD3D79042924D4F300B17382 /* ic_home_pf.png */,
 				DD3D79052924D4F300B17382 /* ic_other_services.png */,
@@ -296,6 +303,8 @@
 				DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */,
 				DD330440298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift */,
 				DD330441298103B500EA1143 /* DashBoardNewsCollectionViewCell.xib */,
+				DD7055AA2988D9B9005B548F /* NewsFeedTableViewCell.swift */,
+				DD7055AB2988D9B9005B548F /* NewsFeedTableViewCell.xib */,
 			);
 			path = adapters;
 			sourceTree = "<group>";
@@ -383,6 +392,7 @@
 				DD3D792D2924D4F300B17382 /* ic_home_education.png in Resources */,
 				DD35BE63291E8422006F6950 /* Localizable.strings in Resources */,
 				DD3D79202924D4F300B17382 /* ic_home_pf.png in Resources */,
+				DD7055AD2988D9B9005B548F /* NewsFeedTableViewCell.xib in Resources */,
 				DD3D792F2924D4F300B17382 /* ic_payment_reminders.png in Resources */,
 				DD3D79262924D4F300B17382 /* ic_compiler.png in Resources */,
 				DD3D79322924D4F300B17382 /* ic_wireless_media.png in Resources */,
@@ -396,6 +406,7 @@
 				DD3D79252924D4F300B17382 /* ic_contacts.png in Resources */,
 				DDD88C5E29267056003B3BD2 /* HomeCollectionViewCell.xib in Resources */,
 				DD3D793A2924D4F300B17382 /* ic_dialy_workouts.png in Resources */,
+				DD4D2325298A7EB50090E8BE /* ic_placeholder.png in Resources */,
 				DD3D792E2924D4F300B17382 /* ic_home_view_resume.png in Resources */,
 				DD3D79352924D4F300B17382 /* ic_home_security.png in Resources */,
 				DD3D79242924D4F300B17382 /* ic_home_zerodha.png in Resources */,
@@ -425,6 +436,7 @@
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
 				DDF640F22983DB4100881582 /* NewsViewController.swift in Sources */,
 				DD41663F2941B8C0006F1666 /* FMDatabase.m in Sources */,
+				DD7055AC2988D9B9005B548F /* NewsFeedTableViewCell.swift in Sources */,
 				DD330442298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift in Sources */,
 				DDF640F42983ED7C00881582 /* NewsFeedData.swift in Sources */,
 				DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */,
