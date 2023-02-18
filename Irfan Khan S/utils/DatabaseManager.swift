@@ -42,6 +42,22 @@ class DatabaseManager: NSObject{
         return result
     }
     
+    func fetchDataValue(query: String) -> Double {
+        shareInstance.database?.open()
+        var result: Double = 0.0
+        do {
+            let fmResultSet = try shareInstance.database?.executeQuery(query, values: [Any]())
+            while fmResultSet?.next() == true {
+                result = fmResultSet?.double(forColumnIndex: 0) ?? 0.0
+            }
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        shareInstance.database?.close()
+        return result
+    }
+    
     class func copyDatabase(_ filename: String){
         
         let dbPath = Utility.getPath("irfan.db")

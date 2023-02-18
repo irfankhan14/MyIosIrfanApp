@@ -57,7 +57,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
             transactionData.amount = -1 * transactionData.amount
         }
         
-        cell.txtAmount.text = "Rs. " + String(fetchTotalAmount(amount: String(transactionData.amount)))
+        cell.txtAmount.text = "Rs. " + String(transactionData.amount)
         cell.txtTransactionType.text = transactionData.transactionType
         cell.txtTransactionType.textColor = fetchTransactionTypeColor(transactionType: transactionData.transactionType)
         cell.txtReason.text = transactionData.reason
@@ -131,13 +131,8 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
             stmt = " where " +  Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_ACCOUNT_TYPE + "='" + accountType + "'"
         }
         let selectQuery = "Select sum(" + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ") from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + stmt
-        let totalAmount = DatabaseManager.getInstance().fetchData(query: selectQuery)
-        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + String(fetchTotalAmount(amount: totalAmount))
-    }
-    
-    private func fetchTotalAmount(amount: String) -> Double {
-        let  result = Double(amount) ?? 0.0
-        return result
+        let totalAmount = DatabaseManager.getInstance().fetchDataValue(query: selectQuery)
+        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + String(totalAmount)
     }
     
     private func fetchTransactionTypeColor(transactionType: String) -> UIColor {
