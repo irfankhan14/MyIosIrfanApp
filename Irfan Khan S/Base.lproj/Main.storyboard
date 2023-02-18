@@ -609,6 +609,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikq-Tj-WMn" userLabel="MainView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ3-lW-3J0">
+                                        <rect key="frame" x="12" y="394.5" width="390" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="208" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8We-0b-03r">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -634,6 +640,10 @@
                                     <constraint firstAttribute="bottom" secondItem="8We-0b-03r" secondAttribute="bottom" id="2dl-ed-rxg"/>
                                     <constraint firstItem="8We-0b-03r" firstAttribute="top" secondItem="Ikq-Tj-WMn" secondAttribute="top" id="8NU-ZY-dSt"/>
                                     <constraint firstItem="8We-0b-03r" firstAttribute="leading" secondItem="Ikq-Tj-WMn" secondAttribute="leading" id="W2j-QV-10E"/>
+                                    <constraint firstItem="jJ3-lW-3J0" firstAttribute="width" secondItem="Ikq-Tj-WMn" secondAttribute="width" constant="-24" id="iG6-L5-VPV"/>
+                                    <constraint firstItem="jJ3-lW-3J0" firstAttribute="leading" secondItem="Ikq-Tj-WMn" secondAttribute="leading" constant="12" id="iNi-5f-KVI"/>
+                                    <constraint firstAttribute="trailing" secondItem="jJ3-lW-3J0" secondAttribute="trailing" constant="12" id="mmo-rQ-1oh"/>
+                                    <constraint firstItem="jJ3-lW-3J0" firstAttribute="centerY" secondItem="Ikq-Tj-WMn" secondAttribute="centerY" id="z8U-9R-BAp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -649,6 +659,7 @@
                     <tabBarItem key="tabBarItem" title="News" image="newspaper" catalog="system" selectedImage="newspaper.fill" id="SYO-X6-GOu"/>
                     <connections>
                         <outlet property="tableNews" destination="8We-0b-03r" id="jqb-tj-jZk"/>
+                        <outlet property="txtErrorMessage" destination="jJ3-lW-3J0" id="dwf-SB-Nx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVV-9k-4oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

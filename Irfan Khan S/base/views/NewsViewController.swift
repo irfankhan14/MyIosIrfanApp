@@ -10,8 +10,11 @@ import UIKit
 class NewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableNews: UITableView!
+    @IBOutlet weak var txtErrorMessage: UILabel!
     
     var databaseManager: DatabaseManager? = nil
+    var indicator: UIActivityIndicatorView? = nil
+    
     var newsArticlesList = Array<Article>()
     
     override func viewDidLoad() {
@@ -21,11 +24,21 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let uiNib = UINib(nibName: "NewsFeedTableViewCell", bundle: nil)
         tableNews.register(uiNib, forCellReuseIdentifier: "news_feed_cell")
+        
+        txtErrorMessage.isHidden = true
+        
+        indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        indicator!.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        indicator!.center = view.center
+        view.addSubview(indicator!)
+        indicator!.bringSubviewToFront(view)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         databaseManager = DatabaseManager.getInstance()
-        fetchDummyData()
+        indicator?.startAnimating()
+        fetchNewsFeedData()
     }
     
     private func fetchDummyData() {
@@ -38,14 +51,9 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do {
             let newsFeedData = try JSONDecoder().decode(NewsFeed.self, from: newsData)
-            print("News Status::" , newsFeedData.status , " and total news count is::" , newsFeedData.totalResults)
-            if (newsFeedData.articles.count > 0) {
-                newsArticlesList.removeAll()
-                newsArticlesList = newsFeedData.articles
-                tableNews.reloadData()
-            }
+            self.onSuccessNewsFeedResponse(newsFeedData: newsFeedData)
         } catch let error {
-            print("Error::", error)
+            self.onFailureNewsFeedResponse(error: error)
         }
     }
     
@@ -111,14 +119,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("onNewsShareClicked::", data.artcile?.title)
     }
     
-//    @objc func onNewsMoreClicked(article: Article) {
-//        print("onNewsMoreClicked::", pos)
-//    }
-//
-//    @objc func onNewsShareClicked() {
-//        print("onNewsShareClicked")
-//    }
-    
     private func fetchNewsFeedData() {
         let selectQuery = "Select " + Constants().SET_DEFAULTS_COLUMN_DESCRIPTION + " from " + Constants().TABLE_SET_DEFAULTS + " where " + Constants().SET_DEFAULTS_COLUMN_TITLE + " = '"
         let newsDataQuery = selectQuery + Constants().NEWS_DATA + "'"
@@ -146,19 +146,39 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let data = data {
                     do {
                         let newsFeedData = try JSONDecoder().decode(NewsFeed.self, from: data)
-                        print("News Status::" , newsFeedData.status , " and total news count is::" , newsFeedData.totalResults)
-                        if (newsFeedData.articles.count > 0) {
-                            self.newsArticlesList.removeAll()
-                            self.newsArticlesList = newsFeedData.articles
-                            DispatchQueue.main.async {
-                                self.tableNews.reloadData()
-                            }
-                        }
+                        self.onSuccessNewsFeedResponse(newsFeedData: newsFeedData)
                     } catch let error {
-                        print("Error::", error)
+                        self.onFailureNewsFeedResponse(error: error)
                     }
                 }
+                if let error = error {
+                    self.onFailureNewsFeedResponse(error: error)
+                }
             }.resume()
+        }
+    }
+    
+    private func onSuccessNewsFeedResponse(newsFeedData: NewsFeed) {
+        print("News Status::" , newsFeedData.status , " and total news count is::" , newsFeedData.totalResults)
+        if (newsFeedData.articles.count > 0) {
+            self.newsArticlesList.removeAll()
+            self.newsArticlesList = newsFeedData.articles
+            DispatchQueue.main.async {
+                self.indicator?.stopAnimating()
+                self.tableNews.reloadData()
+                self.tableNews.isHidden = false
+                self.txtErrorMessage.isHidden = true
+            }
+        }
+    }
+    
+    private func onFailureNewsFeedResponse(error: Error) {
+        print("Error::", error.localizedDescription)
+        DispatchQueue.main.async {
+            self.indicator?.stopAnimating()
+            self.tableNews.isHidden = true
+            self.txtErrorMessage.isHidden = false
+            self.txtErrorMessage.text = error.localizedDescription
         }
     }
     
@@ -188,16 +208,16 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func generateRandomColor() -> UIColor {
-         //Generate between 0 to 1
-         let red:CGFloat = CGFloat(drand48())
-         let green:CGFloat = CGFloat(drand48())
-         let blue:CGFloat = CGFloat(drand48())
-
-         return UIColor(red:red, green: green, blue: blue, alpha: 1.0)
+        //Generate between 0 to 1
+        let red:CGFloat = CGFloat(drand48())
+        let green:CGFloat = CGFloat(drand48())
+        let blue:CGFloat = CGFloat(drand48())
+        
+        return UIColor(red:red, green: green, blue: blue, alpha: 1.0)
     }
     
 }
-                                                 
+
 class NewsTapGesture: UITapGestureRecognizer {
     var artcile: Article? = nil
 }
