@@ -67,6 +67,8 @@
 		DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */; };
 		DDD88C5D29267056003B3BD2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */; };
 		DDD88C5E29267056003B3BD2 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */; };
+		DDF640F22983DB4100881582 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF640F12983DB4100881582 /* NewsViewController.swift */; };
+		DDF640F42983ED7C00881582 /* NewsFeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF640F32983ED7C00881582 /* NewsFeedData.swift */; };
 		DDFD5B36297E4AA8009CC24D /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD5B35297E4AA8009CC24D /* DashBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +145,8 @@
 		DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DDD88C5B29267056003B3BD2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDD88C5C29267056003B3BD2 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		DDF640F12983DB4100881582 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		DDF640F32983ED7C00881582 /* NewsFeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedData.swift; sourceTree = "<group>"; };
 		DDFD5B35297E4AA8009CC24D /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +280,7 @@
 			children = (
 				DD913E4B293F7B7200437A4B /* HomeItems.swift */,
 				DD4166472941E497006F1666 /* TransactionsData.swift */,
+				DDF640F32983ED7C00881582 /* NewsFeedData.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				DDD88C5929266FDA003B3BD2 /* HomeViewController.swift */,
 				DD41664D2941FA96006F1666 /* AccountsViewController.swift */,
 				DDFD5B35297E4AA8009CC24D /* DashBoardViewController.swift */,
+				DDF640F12983DB4100881582 /* NewsViewController.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -417,8 +423,10 @@
 				DD4166442941B977006F1666 /* DatabaseManager.swift in Sources */,
 				DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */,
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
+				DDF640F22983DB4100881582 /* NewsViewController.swift in Sources */,
 				DD41663F2941B8C0006F1666 /* FMDatabase.m in Sources */,
 				DD330442298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift in Sources */,
+				DDF640F42983ED7C00881582 /* NewsFeedData.swift in Sources */,
 				DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */,
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
 				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,
