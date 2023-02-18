@@ -132,7 +132,7 @@ class AccountsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let selectQuery = "Select sum(" + Constants.init().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT + ") from " + Constants.init().TABLE_ACCOUNT_TRANSACTIONS + stmt
         let totalAmount = DatabaseManager.getInstance().fetchDataValue(query: selectQuery)
-        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + String(totalAmount)
+        txtTotalAmount.text = NSLocalizedString("txt_ind_rupee_symbol", comment: "") + String(format:"%.2f", totalAmount)
     }
     
     private func fetchTransactionTypeColor(transactionType: String) -> UIColor {

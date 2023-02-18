@@ -104,13 +104,17 @@ class DashBoardViewController: UIViewController {
     }
     
     private func incrementLabel(label: UILabel, endValue: Int) {
-        let duration: Double = 1.0 //seconds
-        DispatchQueue.global().async {
-            for i in 0 ..< (endValue + 1) {
-                let sleepTime = UInt32(duration/Double(endValue) * 1000000.0)
-                usleep(sleepTime)
-                DispatchQueue.main.async {
-                    label.text = "\(i)"
+        if(endValue == 0) {
+            label.text = "\(endValue)"
+        } else {
+            let duration: Double = 1.0 //seconds
+            DispatchQueue.global().async {
+                for i in 0 ..< (endValue + 1) {
+                    let sleepTime = UInt32(duration/Double(endValue) * 1000000.0)
+                    usleep(sleepTime)
+                    DispatchQueue.main.async {
+                        label.text = "\(i)"
+                    }
                 }
             }
         }
