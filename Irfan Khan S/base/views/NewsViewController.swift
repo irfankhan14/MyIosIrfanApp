@@ -25,7 +25,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         databaseManager = DatabaseManager.getInstance()
-        fetchNewsFeedData()
+        fetchDummyData()
     }
     
     private func fetchDummyData() {
@@ -90,24 +90,34 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.txtAuthor.layer.cornerRadius = 2.0
         cell.txtAuthor.layer.backgroundColor = generateRandomColor().cgColor
         
-        let newsTapMore = UITapGestureRecognizer(target: self, action: #selector(onNewsMoreClicked))
+        let newsTapMore = NewsTapGesture(target: self, action: #selector(self.onNewsMoreClicked(data: )))
+        newsTapMore.artcile = article
         cell.imgMoreNews.addGestureRecognizer(newsTapMore)
         cell.imgMoreNews.isUserInteractionEnabled = true
         
-        let newsTapShare = UITapGestureRecognizer(target: self, action: #selector(onNewsShareClicked))
+        let newsTapShare = NewsTapGesture(target: self, action: #selector(self.onNewsShareClicked(data: )))
+        newsTapShare.artcile = article
         cell.imgShareNews.addGestureRecognizer(newsTapShare)
         cell.imgShareNews.isUserInteractionEnabled = true
         
         return cell
     }
     
-    @objc func onNewsMoreClicked() {
-        print("onNewsMoreClicked")
+    @objc func onNewsMoreClicked(data : NewsTapGesture) {
+        print("onNewsMoreClicked::", data.artcile?.title)
     }
     
-    @objc func onNewsShareClicked() {
-        print("onNewsShareClicked")
+    @objc func onNewsShareClicked(data : NewsTapGesture) {
+        print("onNewsShareClicked::", data.artcile?.title)
     }
+    
+//    @objc func onNewsMoreClicked(article: Article) {
+//        print("onNewsMoreClicked::", pos)
+//    }
+//
+//    @objc func onNewsShareClicked() {
+//        print("onNewsShareClicked")
+//    }
     
     private func fetchNewsFeedData() {
         let selectQuery = "Select " + Constants().SET_DEFAULTS_COLUMN_DESCRIPTION + " from " + Constants().TABLE_SET_DEFAULTS + " where " + Constants().SET_DEFAULTS_COLUMN_TITLE + " = '"
@@ -186,6 +196,10 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
          return UIColor(red:red, green: green, blue: blue, alpha: 1.0)
     }
     
+}
+                                                 
+class NewsTapGesture: UITapGestureRecognizer {
+    var artcile: Article? = nil
 }
 
 extension String {
