@@ -7,8 +7,9 @@
 
 import UIKit
 
-class DashBoardViewController: UIViewController {
-
+class DashBoardViewController: UIViewController , UICollectionViewDelegate,
+                               UICollectionViewDataSource {
+    
     @IBOutlet weak var txtAppname: UILabel!
     @IBOutlet weak var txtEmailAddress: UILabel!
     @IBOutlet weak var txtPhoneNumber: UILabel!
@@ -21,13 +22,19 @@ class DashBoardViewController: UIViewController {
     @IBOutlet weak var txtDailyExpense: UILabel!
     @IBOutlet weak var txtWeeklyIncome: UILabel!
     @IBOutlet weak var txtWeeklyExpense: UILabel!
+    @IBOutlet weak var dashBoardNewsCollection: UICollectionView!
+    @IBOutlet weak var newsCardView: CustomCardView!
     
     var newsCategoryList = Array<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
+        let uiNib = UINib(nibName: "DashBoardNewsCollectionViewCell", bundle: nil)
+        dashBoardNewsCollection?.contentInsetAdjustmentBehavior = .always
+        dashBoardNewsCollection.register(uiNib, forCellWithReuseIdentifier: "dashboard_news_cell")
         
     }
     
@@ -38,6 +45,19 @@ class DashBoardViewController: UIViewController {
         initiliazeAccountWithCounters(dbInstance: dbManager)
         fetchNewsData(dbInstance: dbManager)
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return newsCategoryList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dashboard_news_cell", for: indexPath) as! DashBoardNewsCollectionViewCell
+        cell.txtNewsCategory.text = newsCategoryList[indexPath.row]
+        return cell
+    }
+    
     
     private func fetchMyAccountData() {
         txtAppname.text = NSLocalizedString("app_name", comment: "")
@@ -81,12 +101,12 @@ class DashBoardViewController: UIViewController {
         let dailyExpense = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: dailyExpenseQuery))
         let weeklyIncome = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: weeklyIncomeQuery))
         let weeklyExpense = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: weeklyExpenseQuery))
-
+        
         incrementLabel(label: txtDailyIncome, endValue: dailyIncome)
         incrementLabel(label: txtDailyExpense, endValue: dailyExpense)
         incrementLabel(label: txtWeeklyIncome, endValue: weeklyIncome)
         incrementLabel(label: txtWeeklyExpense, endValue: weeklyExpense)
-
+        
     }
     
     private func fetchNewsData(dbInstance: DatabaseManager) {
@@ -109,8 +129,20 @@ class DashBoardViewController: UIViewController {
         for data in newsCategoryList {
             print(data)
         }
+        
+        dashBoardNewsCollection.reloadData()
+        
+        let numberOfColumns: CGFloat = 3
+        if let flowLayout = dashBoardNewsCollection?.collectionViewLayout as? UICollectionViewFlowLayout {
+            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
+            print(horizontalSpacing)
+            let cellWidth = (dashBoardNewsCollection.frame.width - max(0, numberOfColumns - 1)*horizontalSpacing)/numberOfColumns
+            flowLayout.itemSize = CGSize(width: cellWidth, height: 44)
+        }
     }
-
+    
+    
+    
     @IBAction func onExemptReasons(_ sender: Any) {
         
     }

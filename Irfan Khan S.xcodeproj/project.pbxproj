@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DD1E39D729225420004E10B9 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E39D629225420004E10B9 /* MainTabViewController.swift */; };
+		DD330442298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD330440298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift */; };
+		DD330443298103B500EA1143 /* DashBoardNewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD330441298103B500EA1143 /* DashBoardNewsCollectionViewCell.xib */; };
 		DD35BE4C291E503C006F6950 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35BE4B291E503C006F6950 /* AppDelegate.swift */; };
 		DD35BE4E291E503C006F6950 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35BE4D291E503C006F6950 /* SceneDelegate.swift */; };
 		DD35BE50291E503C006F6950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35BE4F291E503C006F6950 /* ViewController.swift */; };
@@ -70,6 +72,8 @@
 
 /* Begin PBXFileReference section */
 		DD1E39D629225420004E10B9 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		DD330440298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardNewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD330441298103B500EA1143 /* DashBoardNewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashBoardNewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		DD35BE48291E503C006F6950 /* Irfan Khan S.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Irfan Khan S.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD35BE4B291E503C006F6950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD35BE4D291E503C006F6950 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 				DD41664A2941F8F8006F1666 /* AccountTableViewCell.xib */,
 				DD71F1E2294C939900F7DD3F /* TransactionStoryboard.storyboard */,
 				DD71F1E4294C96EF00F7DD3F /* TransactionViewController.swift */,
+				DD330440298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift */,
+				DD330441298103B500EA1143 /* DashBoardNewsCollectionViewCell.xib */,
 			);
 			path = adapters;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD330443298103B500EA1143 /* DashBoardNewsCollectionViewCell.xib in Resources */,
 				DD3D79282924D4F300B17382 /* ic_home_paytm.png in Resources */,
 				DD35BE58291E5040006F6950 /* LaunchScreen.storyboard in Resources */,
 				DD4166462941C106006F1666 /* irfan.db in Resources */,
@@ -411,6 +418,7 @@
 				DD507FB3291FB478008FC8F9 /* Constants.swift in Sources */,
 				DD507FB1291FB06F008FC8F9 /* CustomUITextField.swift in Sources */,
 				DD41663F2941B8C0006F1666 /* FMDatabase.m in Sources */,
+				DD330442298103B500EA1143 /* DashBoardNewsCollectionViewCell.swift in Sources */,
 				DD41664E2941FA96006F1666 /* AccountsViewController.swift in Sources */,
 				DD35BE50291E503C006F6950 /* ViewController.swift in Sources */,
 				DDD88C5A29266FDA003B3BD2 /* HomeViewController.swift in Sources */,

@@ -419,7 +419,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-9q-ZBV" userLabel="Custom Card News" customClass="CustomCardView" customModule="Irfan_Khan_S" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="466" width="390" height="300"/>
+                                        <rect key="frame" x="12" y="466" width="390" height="196"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select News Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JH-0Y-phm">
                                                 <rect key="frame" x="72.5" y="12" width="245" height="24.5"/>
@@ -434,37 +434,47 @@
                                                     <constraint firstAttribute="height" constant="4" id="cos-OV-c5X"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-1x-3Io" userLabel="News Collection View">
-                                                <rect key="frame" x="12" y="71" width="240" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-1x-3Io" userLabel="News Collection View">
+                                                <rect key="frame" x="12" y="64.5" width="366" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hhE-fk-HsA">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="YCa-Rk-tNg"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="OFh-W1-YPq">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RtO-GA-jEj">
-                                                        <rect key="frame" x="56" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CL8-g6-6Xy">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3P4-Vb-yzw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="afn-kl-hxC">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </collectionViewCellContentView>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="tuP-1a-IS1" id="KhD-fb-JCD"/>
+                                                    <outlet property="delegate" destination="tuP-1a-IS1" id="pV8-If-iMS"/>
+                                                </connections>
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="uGl-cR-zYi" secondAttribute="trailing" constant="12" id="4Oc-sf-AxH"/>
+                                            <constraint firstItem="OCy-1x-3Io" firstAttribute="top" secondItem="uGl-cR-zYi" secondAttribute="bottom" constant="12" id="B4A-Z8-bqC"/>
+                                            <constraint firstAttribute="trailing" secondItem="OCy-1x-3Io" secondAttribute="trailing" constant="12" id="BG3-wf-rVv"/>
                                             <constraint firstItem="0JH-0Y-phm" firstAttribute="centerX" secondItem="VDI-9q-ZBV" secondAttribute="centerX" id="EIT-Ls-hBs"/>
                                             <constraint firstItem="uGl-cR-zYi" firstAttribute="centerX" secondItem="VDI-9q-ZBV" secondAttribute="centerX" id="T0b-rP-uyY"/>
+                                            <constraint firstItem="OCy-1x-3Io" firstAttribute="width" secondItem="VDI-9q-ZBV" secondAttribute="width" constant="-24" id="XwC-ba-IYS"/>
                                             <constraint firstItem="0JH-0Y-phm" firstAttribute="top" secondItem="VDI-9q-ZBV" secondAttribute="top" constant="12" id="YoU-Sp-hEb"/>
                                             <constraint firstItem="uGl-cR-zYi" firstAttribute="top" secondItem="0JH-0Y-phm" secondAttribute="bottom" constant="12" id="grn-wZ-840"/>
+                                            <constraint firstItem="OCy-1x-3Io" firstAttribute="leading" secondItem="VDI-9q-ZBV" secondAttribute="leading" constant="12" id="jhT-6G-Hr3"/>
                                             <constraint firstItem="uGl-cR-zYi" firstAttribute="leading" secondItem="VDI-9q-ZBV" secondAttribute="leading" constant="12" id="kEj-Df-L3F"/>
-                                            <constraint firstAttribute="height" constant="300" id="m5G-9R-cXt"/>
+                                            <constraint firstAttribute="height" constant="196" id="m5G-9R-cXt"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -493,6 +503,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="keyboard" catalog="system" selectedImage="keyboard.fill" id="FCi-qT-BkL"/>
                     <connections>
+                        <outlet property="dashBoardNewsCollection" destination="OCy-1x-3Io" id="0qY-ht-GLX"/>
+                        <outlet property="newsCardView" destination="VDI-9q-ZBV" id="GB8-Fg-lLC"/>
                         <outlet property="txtAppname" destination="mHo-9Z-5Fj" id="pBr-IW-YvN"/>
                         <outlet property="txtDaily" destination="6HL-z1-8bE" id="IY8-Rr-OSg"/>
                         <outlet property="txtDailyExpense" destination="0qG-CZ-V11" id="3hL-qR-1fu"/>
