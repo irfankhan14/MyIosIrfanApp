@@ -26,6 +26,8 @@ class DashBoardViewController: UIViewController , UICollectionViewDelegate,
     @IBOutlet weak var newsCardView: CustomCardView!
     
     var newsCategoryList = Array<String>()
+    var selectedNewsDataList = Array<String>()
+    var databaseManager: DatabaseManager? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,12 @@ class DashBoardViewController: UIViewController , UICollectionViewDelegate,
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let dbManager = DatabaseManager.getInstance()
+        databaseManager = DatabaseManager.getInstance()
+        
         fetchMyAccountData()
         fetchBalanceData()
-        initiliazeAccountWithCounters(dbInstance: dbManager)
-        fetchNewsData(dbInstance: dbManager)
+        initiliazeAccountWithCounters()
+        fetchNewsData()
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -54,10 +57,103 @@ class DashBoardViewController: UIViewController , UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dashboard_news_cell", for: indexPath) as! DashBoardNewsCollectionViewCell
+        
         cell.txtNewsCategory.text = newsCategoryList[indexPath.row]
+        
+        if(fetchSelectedNews(selectedNews: newsCategoryList[indexPath.row])) {
+            cell.imgDashBoardNews.image = UIImage(named: "ic_rectangle_fill")
+            cell.txtNewsCategory.textColor = UIColor.white
+            if(newsCategoryList[indexPath.row] == Constants().NEWS_KEY_SEARCH) {
+                cell.txtNewsCategory.text = selectedNewsDataList[1]
+            }
+        } else {
+            if(fetchSelectedCategory(selectedNews: newsCategoryList[indexPath.row])) {
+                cell.imgDashBoardNews.image = UIImage(named: "ic_rectangle_fill")
+                cell.txtNewsCategory.textColor = UIColor.white
+            } else {
+                cell.imgDashBoardNews.image = UIImage(named: "ic_rectangle_border")
+                cell.txtNewsCategory.textColor = UIColor.black
+            }
+        }
+        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
+        if(indexPath.row == 0) {
+            updateNewsData(title: Constants().NEWS_HEADLINES, description: Constants().NEWS_KEY_HEADLINES)
+        } else if(indexPath.row == 1) {
+            showAlertDialogForNewsSearch()
+        } else {
+            updateNewsData(title: Constants().NEWS_CATEGORY, description: newsCategoryList[indexPath.row])
+        }
+    }
+    
+    private func showAlertDialogForNewsSearch() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("title_news", comment: ""),
+            message: NSLocalizedString("txt_dialog_keyword", comment: ""),
+            preferredStyle: .alert)
+        
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = NSLocalizedString("title_news", comment: "")
+        }
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("txt_submit", comment: ""),
+            style: .default,
+            handler: { (action:UIAlertAction) in
+                let description = alert.textFields![0] as UITextField
+                self.updateNewsData(title: Constants().NEWS_SEARCH, description: description.text ?? "" )
+            }
+        ))
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("txt_cancel", comment: ""),
+            style: .cancel,
+            handler: nil)
+        )
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func updateNewsData(title: String, description: String) {
+        let newsData = title + "," + description + "," + selectedNewsDataList[2] + "," + selectedNewsDataList[3] + "," + selectedNewsDataList[4]
+        let query = "Update " + Constants().TABLE_SET_DEFAULTS + " set " + Constants().SET_DEFAULTS_COLUMN_DESCRIPTION + " = '" + newsData + "'" + " where " + Constants().SET_DEFAULTS_COLUMN_TITLE + " = '" + Constants().NEWS_DATA + "'"
+        
+        if (databaseManager!.handleInsertDeleteUpdate(query: query)) {
+            showToast(message: NSLocalizedString("txt_news_updated", comment: ""), font: .systemFont(ofSize: 12.0))
+            fetchNewsData()
+            dashBoardNewsCollection.reloadData()
+        }
+    }
+    
+    private func fetchSelectedNews(selectedNews: String) -> Bool {
+        if(selectedNewsDataList.isEmpty) {
+            return false
+        } else {
+            let newsTitle = selectedNewsDataList[0]
+            let selectedNewsValue = selectedNews.replacingOccurrences(of: " ", with: "")
+            if(newsTitle.containsIgnoringCase(selectedNewsValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
+    private func fetchSelectedCategory(selectedNews: String) -> Bool {
+        if(selectedNewsDataList.isEmpty) {
+            return false
+        } else {
+            let newsTitle = selectedNewsDataList[1]
+            let selectedNewsValue = selectedNews.replacingOccurrences(of: " ", with: "")
+            if(newsTitle.containsIgnoringCase(selectedNewsValue)) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
     
     private func fetchMyAccountData() {
         txtAppname.text = NSLocalizedString("app_name", comment: "")
@@ -71,7 +167,7 @@ class DashBoardViewController: UIViewController , UICollectionViewDelegate,
         txtLowBalanceData.text = NSLocalizedString("txt_balance_data", comment: "")
     }
     
-    private func initiliazeAccountWithCounters(dbInstance: DatabaseManager) {
+    private func initiliazeAccountWithCounters() {
         let dateFormat = Constants().TXT_DATE_FORMAT.replacingOccurrences(of: "-", with: "")
         let startTime = Constants().TXT_START_TIME
         let endTime = Constants().TXT_END_TIME
@@ -96,27 +192,31 @@ class DashBoardViewController: UIViewController , UICollectionViewDelegate,
         let weeklyIncomeQuery = weeklyQuery + "!='" + Constants().TXT_CASH_WITHDRAWAL + "'"
         let weeklyExpenseQuery = weeklyQuery + "='" + Constants().TXT_CASH_WITHDRAWAL + "'"
         
-        
-        let dailyIncome = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: dailyIncomeQuery))
-        let dailyExpense = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: dailyExpenseQuery))
-        let weeklyIncome = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: weeklyIncomeQuery))
-        let weeklyExpense = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: weeklyExpenseQuery))
+        let dailyIncome = fetchRoundedAmountValues(amount: databaseManager!.fetchData(query: dailyIncomeQuery))
+        let dailyExpense = fetchRoundedAmountValues(amount: databaseManager!.fetchData(query: dailyExpenseQuery))
+        let weeklyIncome = fetchRoundedAmountValues(amount: databaseManager!.fetchData(query: weeklyIncomeQuery))
+        let weeklyExpense = fetchRoundedAmountValues(amount: databaseManager!.fetchData(query: weeklyExpenseQuery))
         
         incrementLabel(label: txtDailyIncome, endValue: dailyIncome)
         incrementLabel(label: txtDailyExpense, endValue: dailyExpense)
         incrementLabel(label: txtWeeklyIncome, endValue: weeklyIncome)
         incrementLabel(label: txtWeeklyExpense, endValue: weeklyExpense)
-        
     }
     
-    private func fetchNewsData(dbInstance: DatabaseManager) {
+    private func fetchNewsData() {
         
         let selectQuery = "Select " + Constants().SET_DEFAULTS_COLUMN_DESCRIPTION + " from " + Constants().TABLE_SET_DEFAULTS + " where " + Constants().SET_DEFAULTS_COLUMN_TITLE + " = '"
         let newsDataQuery = selectQuery + Constants().NEWS_DATA + "'"
         let newsCategoryQuery = selectQuery + Constants().NEWS_CATEGORY + "'"
         
-        let newsData = dbInstance.fetchData(query: newsDataQuery)
-        let newsCategory = dbInstance.fetchData(query: newsCategoryQuery)
+        let newsData = databaseManager!.fetchData(query: newsDataQuery)
+        let newsCategory = databaseManager!.fetchData(query: newsCategoryQuery)
+
+        let newsDataArray = newsData.components(separatedBy: ",")
+        selectedNewsDataList.removeAll()
+        for data in newsDataArray {
+            selectedNewsDataList.append(data)
+        }
         
         let newsCategoryArray = newsCategory.components(separatedBy: ", ")
         newsCategoryList.removeAll()
@@ -126,18 +226,14 @@ class DashBoardViewController: UIViewController , UICollectionViewDelegate,
             newsCategoryList.append(data.capitalizingFirstLetter())
         }
         
-        for data in newsCategoryList {
-            print(data)
-        }
-        
         dashBoardNewsCollection.reloadData()
         
         let numberOfColumns: CGFloat = 3
         if let flowLayout = dashBoardNewsCollection?.collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
-            print(horizontalSpacing)
             let cellWidth = (dashBoardNewsCollection.frame.width - max(0, numberOfColumns - 1)*horizontalSpacing)/numberOfColumns
             flowLayout.itemSize = CGSize(width: cellWidth, height: 44)
+            flowLayout.minimumLineSpacing = 2
         }
     }
     

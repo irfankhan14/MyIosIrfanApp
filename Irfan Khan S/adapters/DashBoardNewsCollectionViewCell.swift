@@ -10,6 +10,8 @@ import UIKit
 class DashBoardNewsCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var txtNewsCategory: UILabel!
+    @IBOutlet weak var imgDashBoardNews: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -419,7 +419,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-9q-ZBV" userLabel="Custom Card News" customClass="CustomCardView" customModule="Irfan_Khan_S" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="466" width="390" height="196"/>
+                                        <rect key="frame" x="12" y="466" width="390" height="224"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select News Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JH-0Y-phm">
                                                 <rect key="frame" x="72.5" y="12" width="245" height="24.5"/>
@@ -435,10 +435,10 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-1x-3Io" userLabel="News Collection View">
-                                                <rect key="frame" x="12" y="64.5" width="366" height="128"/>
+                                                <rect key="frame" x="12" y="64.5" width="366" height="136"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="YCa-Rk-tNg"/>
+                                                    <constraint firstAttribute="height" constant="136" id="YCa-Rk-tNg"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="OFh-W1-YPq">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -474,7 +474,7 @@
                                             <constraint firstItem="uGl-cR-zYi" firstAttribute="top" secondItem="0JH-0Y-phm" secondAttribute="bottom" constant="12" id="grn-wZ-840"/>
                                             <constraint firstItem="OCy-1x-3Io" firstAttribute="leading" secondItem="VDI-9q-ZBV" secondAttribute="leading" constant="12" id="jhT-6G-Hr3"/>
                                             <constraint firstItem="uGl-cR-zYi" firstAttribute="leading" secondItem="VDI-9q-ZBV" secondAttribute="leading" constant="12" id="kEj-Df-L3F"/>
-                                            <constraint firstAttribute="height" constant="196" id="m5G-9R-cXt"/>
+                                            <constraint firstAttribute="height" constant="224" id="m5G-9R-cXt"/>
                                         </constraints>
                                     </view>
                                 </subviews>

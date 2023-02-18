@@ -4,46 +4,52 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DashBoardNewsCollectionViewCell" customModule="Irfan_Khan_S" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="114" height="36"/>
+            <rect key="frame" x="0.0" y="0.0" width="72" height="48"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="114" height="36"/>
+                <rect key="frame" x="0.0" y="0.0" width="72" height="48"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRo-2f-YGo">
-                        <rect key="frame" x="0.0" y="0.0" width="114" height="36"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmQ-4T-mxS">
-                                <rect key="frame" x="0.0" y="0.0" width="114" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rectangle_border" translatesAutoresizingMaskIntoConstraints="NO" id="me0-yo-bVd">
+                        <rect key="frame" x="0.0" y="0.0" width="68" height="48"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG4-Xz-2ht">
+                        <rect key="frame" x="17" y="17" width="37" height="15"/>
+                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="MG4-Xz-2ht" firstAttribute="centerY" secondItem="me0-yo-bVd" secondAttribute="centerY" id="4cX-yJ-7nD"/>
+                <constraint firstAttribute="bottom" secondItem="me0-yo-bVd" secondAttribute="bottom" id="A38-uL-bQI"/>
+                <constraint firstItem="me0-yo-bVd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="BPb-6a-jKo"/>
+                <constraint firstItem="me0-yo-bVd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ktq-nT-cHH"/>
+                <constraint firstAttribute="trailing" secondItem="me0-yo-bVd" secondAttribute="trailing" constant="4" id="VLo-lA-yHD"/>
+                <constraint firstAttribute="bottom" secondItem="me0-yo-bVd" secondAttribute="bottom" id="VuB-NT-L8j"/>
+                <constraint firstItem="me0-yo-bVd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xf2-pr-7b2"/>
+                <constraint firstItem="me0-yo-bVd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bfd-rB-leo"/>
+                <constraint firstItem="me0-yo-bVd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dwb-94-P4a"/>
+                <constraint firstAttribute="trailing" secondItem="me0-yo-bVd" secondAttribute="trailing" constant="4" id="pYN-TT-g1B"/>
+                <constraint firstItem="MG4-Xz-2ht" firstAttribute="centerX" secondItem="me0-yo-bVd" secondAttribute="centerX" id="r2K-o7-yRp"/>
+            </constraints>
             <size key="customSize" width="72" height="48"/>
             <connections>
-                <outlet property="txtNewsCategory" destination="CmQ-4T-mxS" id="m7B-qP-vg6"/>
+                <outlet property="imgDashBoardNews" destination="me0-yo-bVd" id="OkQ-Pj-dmS"/>
+                <outlet property="txtNewsCategory" destination="MG4-Xz-2ht" id="KHW-WZ-Y6i"/>
             </connections>
             <point key="canvasLocation" x="-305.79710144927537" y="18.75"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="ic_rectangle_border" width="64" height="64"/>
     </resources>
 </document>

@@ -46,5 +46,13 @@ extension String {
             return data.substring(to: data.index(before: data.endIndex))
         }
     }
-
+    
+    func contains(_ find: String) -> Bool{
+        return self.range(of: find) != nil
+    }
+    
+    func containsIgnoringCase(_ find: String) -> Bool{
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
+    
 }
