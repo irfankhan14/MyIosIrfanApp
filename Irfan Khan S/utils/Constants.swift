@@ -114,7 +114,7 @@ class Constants {
 
 
     // Links usages in App
-    let BASE_URL = "http://newsapi.org/v2/"
+    let BASE_URL = "https://newsapi.org/v2/"
     let FACEBOOK_URL = "https://www.facebook.com"
     let LINKED_IN_URL = "https://www.linkedin.com"
     let TWITTER_URL = "https://www.twitter.com"

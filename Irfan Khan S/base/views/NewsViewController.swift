@@ -9,21 +9,52 @@ import UIKit
 
 class NewsViewController: UIViewController {
     
+    
+    var databaseManager: DatabaseManager? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         //    https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=819637923ff648afa45ec02f9630ce12
-        fetchNewsFeed()
     }
     
-    private func fetchNewsFeed() {
-        if let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=819637923ff648afa45ec02f9630ce12") {
+    override func viewDidAppear(_ animated: Bool) {
+        databaseManager = DatabaseManager.getInstance()
+        fetchNewsData()
+    }
+    
+    private func fetchNewsData() {
+        let selectQuery = "Select " + Constants().SET_DEFAULTS_COLUMN_DESCRIPTION + " from " + Constants().TABLE_SET_DEFAULTS + " where " + Constants().SET_DEFAULTS_COLUMN_TITLE + " = '"
+        let newsDataQuery = selectQuery + Constants().NEWS_DATA + "'"
+        let newsData = databaseManager!.fetchData(query: newsDataQuery)
+        let newsDataArray = newsData.components(separatedBy: ",")
+
+        var type = ""
+        if(newsDataArray[0] == Constants().NEWS_HEADLINES) {
+            type = "top-headlines?" + "country=" + newsDataArray[2]
+        } else if(newsDataArray[0] == Constants().NEWS_SEARCH) {
+            var searchData = newsDataArray[1]
+            searchData = searchData.replacingOccurrences(of: " ", with: "")
+            type = "everything?q=" + searchData
+        } else {
+            type = "top-headlines?category=" + newsDataArray[1]
+        }
+        
+        let newsFeedUrl = Constants().BASE_URL + type + "&apiKey=" + newsDataArray[4]
+        fetchNewsFeed(newsFeedUrl: newsFeedUrl)
+        print(newsData)
+        print(newsFeedUrl)
+        
+    }
+    
+    private func fetchNewsFeed(newsFeedUrl: String) {
+        if let url = URL(string: newsFeedUrl) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {
                         let newsFeedData = try JSONDecoder().decode(NewsFeed.self, from: data)
-                        print(newsFeedData.status)
+                        print("News Status::" , newsFeedData.status , " and total news count is::" , newsFeedData.totalResults)
                     } catch let error {
                         print("Error::", error)
                     }
@@ -32,37 +63,7 @@ class NewsViewController: UIViewController {
         }
     }
     
-    private func test() {
-        let person = """
-        {
-            "name": "Josh",
-            "age": 30,
-            "full_name": "Josh Smith"
-        }
-        """
-        
-        print(person)
-        
-        let personData = Data(person.utf8)
-        
-        //3 - Create a JSONDecoder instance
-        let jsonDecoder = JSONDecoder()
-        
-        //4 - set the keyDecodingStrategy to convertFromSnakeCase on the jsonDecoder instance
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        //5 - Use the jsonDecoder instance to decode the json into a Person object
-        do {
-            let decodedPerson = try jsonDecoder.decode(Person.self, from: personData)
-            print("Person -- \(decodedPerson.name) was decode and their age is: \(decodedPerson.age)")
-        } catch {
-            print("Error: \(error.localizedDescription)")
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
+
     
 }
 
