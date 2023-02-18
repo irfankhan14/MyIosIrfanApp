@@ -22,18 +22,21 @@ class DashBoardViewController: UIViewController {
     @IBOutlet weak var txtWeeklyIncome: UILabel!
     @IBOutlet weak var txtWeeklyExpense: UILabel!
     
+    var newsCategoryList = Array<String>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let dbManager = DatabaseManager.getInstance()
         fetchMyAccountData()
         fetchBalanceData()
-        initiliazeAccountWithCounters()
+        initiliazeAccountWithCounters(dbInstance: dbManager)
+        fetchNewsData(dbInstance: dbManager)
     }
     
     private func fetchMyAccountData() {
@@ -48,7 +51,7 @@ class DashBoardViewController: UIViewController {
         txtLowBalanceData.text = NSLocalizedString("txt_balance_data", comment: "")
     }
     
-    private func initiliazeAccountWithCounters() {
+    private func initiliazeAccountWithCounters(dbInstance: DatabaseManager) {
         let dateFormat = Constants().TXT_DATE_FORMAT.replacingOccurrences(of: "-", with: "")
         let startTime = Constants().TXT_START_TIME
         let endTime = Constants().TXT_END_TIME
@@ -59,24 +62,21 @@ class DashBoardViewController: UIViewController {
         let weeklyStartTime = UtilityDates().getFirstDayOfWeek(pattern: dateFormat) + startTime
         let weeklyEndTime = UtilityDates().getLastDayOfWeek(pattern: dateFormat) + endTime
         
-        
-        let dailyIncomeQuery = "Select sum(" + Constants().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT +
+        let dailyQuery = "Select sum(" + Constants().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT +
         ") from " + Constants().TABLE_ACCOUNT_TRANSACTIONS + " where " +
-        Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ">='" + todayStartTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + "<='" + todayEndTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + "!='" + Constants().TXT_CASH_WITHDRAWAL + "'"
+        Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ">='" + todayStartTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + "<='" + todayEndTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE
         
-        let dailyExpenseQuery = "Select sum(" + Constants().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT +
+        let weeklyQuery = "Select sum(" + Constants().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT +
         ") from " + Constants().TABLE_ACCOUNT_TRANSACTIONS + " where " +
-        Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ">='" + todayStartTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + "<='" + todayEndTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + "='" + Constants().TXT_CASH_WITHDRAWAL + "'"
+        Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ">='" + weeklyStartTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + "<='" + weeklyEndTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE
         
-        let weeklyIncomeQuery = "Select sum(" + Constants().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT +
-        ") from " + Constants().TABLE_ACCOUNT_TRANSACTIONS + " where " +
-        Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ">='" + weeklyStartTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + "<='" + weeklyEndTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + "!='" + Constants().TXT_CASH_WITHDRAWAL + "'"
+        let dailyIncomeQuery = dailyQuery + "!='" + Constants().TXT_CASH_WITHDRAWAL + "'"
+        let dailyExpenseQuery = dailyQuery + "='" + Constants().TXT_CASH_WITHDRAWAL + "'"
         
-        let weeklyExpenseQuery = "Select sum(" + Constants().ACCOUNT_TRANSACTIONS_COLUMN_AMOUNT +
-        ") from " + Constants().TABLE_ACCOUNT_TRANSACTIONS + " where " +
-        Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + ">='" + weeklyStartTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TIMESTAMP + "<='" + weeklyEndTime + "' and " + Constants().ACCOUNT_TRANSACTIONS_COLUMN_TRANSACTION_TYPE + "='" + Constants().TXT_CASH_WITHDRAWAL + "'"
+        let weeklyIncomeQuery = weeklyQuery + "!='" + Constants().TXT_CASH_WITHDRAWAL + "'"
+        let weeklyExpenseQuery = weeklyQuery + "='" + Constants().TXT_CASH_WITHDRAWAL + "'"
         
-        let dbInstance = DatabaseManager.getInstance()
+        
         let dailyIncome = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: dailyIncomeQuery))
         let dailyExpense = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: dailyExpenseQuery))
         let weeklyIncome = fetchRoundedAmountValues(amount: dbInstance.fetchData(query: weeklyIncomeQuery))
@@ -87,7 +87,28 @@ class DashBoardViewController: UIViewController {
         incrementLabel(label: txtWeeklyIncome, endValue: weeklyIncome)
         incrementLabel(label: txtWeeklyExpense, endValue: weeklyExpense)
 
-
+    }
+    
+    private func fetchNewsData(dbInstance: DatabaseManager) {
+        
+        let selectQuery = "Select " + Constants().SET_DEFAULTS_COLUMN_DESCRIPTION + " from " + Constants().TABLE_SET_DEFAULTS + " where " + Constants().SET_DEFAULTS_COLUMN_TITLE + " = '"
+        let newsDataQuery = selectQuery + Constants().NEWS_DATA + "'"
+        let newsCategoryQuery = selectQuery + Constants().NEWS_CATEGORY + "'"
+        
+        let newsData = dbInstance.fetchData(query: newsDataQuery)
+        let newsCategory = dbInstance.fetchData(query: newsCategoryQuery)
+        
+        let newsCategoryArray = newsCategory.components(separatedBy: ", ")
+        newsCategoryList.removeAll()
+        newsCategoryList.append(Constants().NEWS_KEY_HEADLINES)
+        newsCategoryList.append(Constants().NEWS_KEY_SEARCH)
+        for data in newsCategoryArray {
+            newsCategoryList.append(data.capitalizingFirstLetter())
+        }
+        
+        for data in newsCategoryList {
+            print(data)
+        }
     }
 
     @IBAction func onExemptReasons(_ sender: Any) {
